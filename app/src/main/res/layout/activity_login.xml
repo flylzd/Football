@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_margin_top"
+        android:orientation="horizontal">
+
+        <include layout="@layout/line_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_login_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/login_username_hint"
+                android:padding="@dimen/main_padding"
+                android:textColor="@color/black"
+                android:textColorHint="@color/defaultHint"
+                android:textSize="@dimen/login_hint_textSize" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_login_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/login_username_hint"
+                android:padding="@dimen/main_padding"
+                android:textColor="@color/black"
+                android:textColorHint="@color/defaultHint"
+                android:textSize="@dimen/login_hint_textSize" />
+
+        </LinearLayout>
+
+
+        <include layout="@layout/line_horizontal" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
