@@ -1,13 +1,20 @@
 package com.derby.football.base;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.derby.football.R;
 import com.derby.football.utils.StatusBarCompat;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class BaseActivity extends AppCompatActivity {
@@ -15,6 +22,10 @@ public class BaseActivity extends AppCompatActivity {
     private static final int ERROR_LAYOUT_ID = 0;
 
     private View rootView;
+
+    private Toolbar toolbar;
+    private TextView toolbarTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,7 @@ public class BaseActivity extends AppCompatActivity {
         StatusBarCompat.compat(this, getResources().getColor(R.color.colorPrimary));
         ButterKnife.bind(this);
 
+        initToolbar();
         initViewsAndEvents(savedInstanceState);
     }
 
@@ -58,8 +70,20 @@ public class BaseActivity extends AppCompatActivity {
         return ERROR_LAYOUT_ID;
     }
 
-    protected void initToolbar() {
+    private void initToolbar() {
 
+        View toolbarView =  rootView.findViewById(R.id.toolbar);
+        if (toolbarView != null){
+            toolbar = (Toolbar) toolbarView;
+            setSupportActionBar(toolbar);
+            toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            if (toolbarTitle != null){
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
+        }
+        if (isDisplayBackEnabled()){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     protected void initViewsAndEvents(Bundle savedInstanceState) {
@@ -68,6 +92,26 @@ public class BaseActivity extends AppCompatActivity {
 
     protected View getRootView() {
         return rootView;
+    }
+
+    protected Toolbar getToolbar() {
+        return toolbar;
+    }
+
+    public void setTitle(int resId) {
+        if (toolbarTitle != null){
+            toolbarTitle.setText(resId);
+        }
+    }
+
+    public void setTitle(String title) {
+        if (toolbarTitle != null){
+            toolbarTitle.setText(title);
+        }
+    }
+
+    protected boolean isDisplayBackEnabled() {
+        return true;
     }
 
 }
