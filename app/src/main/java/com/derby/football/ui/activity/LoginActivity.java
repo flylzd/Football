@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.api.API;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.utils.ResUtil;
 import com.derby.football.utils.ToastUtil;
@@ -16,6 +17,9 @@ import com.derby.football.utils.UIHelper;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class LoginActivity extends BaseActivity {
 
@@ -55,9 +59,21 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.btnLogin)
     void login() {
-        if (checkLogin()){
-            UIHelper.showRegisterActivity(this);
-        }
+//        if (checkLogin()){
+//            UIHelper.showRegisterActivity(this);
+//        }
+
+        API.getApiService().getBaidu().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Response<String> response, Retrofit retrofit) {
+                System.out.println("response : "  + response.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                System.out.println("t : "  + t.toString());
+            }
+        });
     }
 
     @OnClick(R.id.tvRegister)

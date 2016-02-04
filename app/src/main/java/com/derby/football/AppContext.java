@@ -4,6 +4,7 @@ package com.derby.football;
 import android.app.Application;
 import android.content.Context;
 
+import com.blackcat.retrofitutil.RetrofitUtil;
 import com.derby.football.utils.ResUtil;
 import com.derby.football.utils.ToastUtil;
 import com.orhanobut.logger.Logger;
@@ -18,7 +19,7 @@ public class AppContext extends Application {
         instatnce = this;
         ToastUtil.register(this);
         ResUtil.init(this);
-//        RetrofitUtil.init(this);
+        RetrofitUtil.init(this);
         Logger.init();
     }
 

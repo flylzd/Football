@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import com.derby.football.R;
 import com.derby.football.utils.StatusBarCompat;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
