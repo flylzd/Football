@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    app:theme="@style/ToolbarTheme">
 
     <TextView
         android:id="@+id/toolbar_title"

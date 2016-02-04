@@ -12,73 +12,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginTop="@dimen/login_margin_top"
+        android:background="@color/white"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/login_icon_padding_top"
-            android:paddingTop="@dimen/login_icon_padding_top"
-            android:paddingLeft="@dimen/login_icon_padding_left"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+        <LinearLayout style="@style/loginAndRegisterLayout">
 
             <ImageView
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_login_phone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_login_phone" />
 
             <EditText
                 android:id="@+id/etUsername"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:layout_marginLeft="@dimen/login_edit_margin_left"
-                android:hint="@string/login_username_hint"
-                android:padding="@dimen/main_padding"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:textColorHint="@color/defaultHint"
-                android:textSize="@dimen/login_hint_textSize" />
+                style="@style/loginAndRegisterEdit"
+                android:hint="@string/login_username_hint" />
 
         </LinearLayout>
 
         <include layout="@layout/line_horizontal" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/login_icon_padding_top"
-            android:paddingTop="@dimen/login_icon_padding_top"
-            android:paddingLeft="@dimen/login_icon_padding_left"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+        <LinearLayout style="@style/loginAndRegisterLayout">
 
             <ImageView
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_login_password"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_login_password" />
 
             <EditText
                 android:id="@+id/etPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:layout_marginLeft="@dimen/login_edit_margin_left"
-                android:hint="@string/login_password_hint"
-                android:padding="@dimen/main_padding"
-                android:textColor="@color/black"
-                android:singleLine="true"
-                android:gravity="center_vertical"
-                android:textColorHint="@color/defaultHint"
-                android:textSize="@dimen/login_hint_textSize" />
+                style="@style/loginAndRegisterEdit"
+                android:hint="@string/login_password_hint" />
 
         </LinearLayout>
 
@@ -86,46 +52,43 @@
 
     <include layout="@layout/line_horizontal" />
 
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/main_margin_top"
-        android:text="@string/login_title"
-        android:background="@drawable/selector_bg_btn"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/main_margin_top"
         android:layout_marginRight="@dimen/main_margin_top"
-        android:textColor="@color/white"
-        android:textSize="@dimen/login_hint_textSize"
-        android:layout_height="wrap_content" />
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/selector_bg_btn"
+        android:text="@string/login_title"
+        android:textColor="@drawable/color_text_btn"
+        android:textSize="@dimen/login_hint_textSize" />
 
     <RelativeLayout
-        android:layout_marginLeft="@dimen/main_margin_top"
-        android:layout_marginRight="@dimen/main_margin_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/main_margin_top"
+        android:layout_marginRight="@dimen/main_margin_top">
 
         <TextView
             android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
-            android:text="@string/register_title"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/login_text_bottom_margin"
-            android:layout_height="wrap_content"
-            android:textColor="@color/login_text_bottom"/>
+            android:text="@string/register_title"
+            android:textColor="@color/login_text_bottom" />
 
         <TextView
             android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
-            android:text="@string/forgot_password_title"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="@dimen/login_text_bottom_margin"
-            android:layout_height="wrap_content"
-            android:textColor="@color/login_text_bottom"/>
-
+            android:text="@string/forgot_password_title"
+            android:textColor="@color/login_text_bottom" />
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

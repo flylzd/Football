@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -72,16 +74,20 @@ public class BaseActivity extends AppCompatActivity {
 
     private void initToolbar() {
 
-        View toolbarView =  rootView.findViewById(R.id.toolbar);
-        if (toolbarView != null){
+        View toolbarView = rootView.findViewById(R.id.toolbar);
+        if (toolbarView != null) {
             toolbar = (Toolbar) toolbarView;
             setSupportActionBar(toolbar);
             toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-            if (toolbarTitle != null){
+            if (toolbarTitle != null) {
+                int titleResId = getToolbarTitle();
+                if (titleResId != 0) {
+                    toolbarTitle.setText(titleResId);
+                }
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
             }
         }
-        if (isDisplayBackEnabled()){
+        if (isDisplayBackEnabled()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -98,20 +104,33 @@ public class BaseActivity extends AppCompatActivity {
         return toolbar;
     }
 
+    protected int getToolbarTitle() {
+        return 0;
+    }
+
     public void setTitle(int resId) {
-        if (toolbarTitle != null){
+        if (toolbarTitle != null) {
             toolbarTitle.setText(resId);
         }
     }
 
     public void setTitle(String title) {
-        if (toolbarTitle != null){
+        if (toolbarTitle != null) {
             toolbarTitle.setText(title);
         }
     }
+
 
     protected boolean isDisplayBackEnabled() {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

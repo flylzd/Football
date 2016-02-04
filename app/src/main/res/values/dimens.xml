@@ -8,13 +8,15 @@
     <dimen name="login_icon_padding_top">10dp</dimen>
     <dimen name="login_edit_margin_left">8dp</dimen>
     <dimen name="login_text_bottom_margin">10dp</dimen>
+    <dimen name="register_margin_top">12dp</dimen>
 
     <dimen name="main_margin_top">16dp</dimen>
     <dimen name="main_padding">4dp</dimen>
 
+    <dimen name="verification_code_height">32dp</dimen>
     <dimen name="line_hegiht">1dp</dimen>
 
-
+    <!-- 字体-->
     <dimen name="login_hint_textSize">20sp</dimen>
     
 </resources>

@@ -6,8 +6,14 @@
     <string name="login_password_hint">请输入密码</string>
 
     <string name="register_title">注册</string>
+    <string name="register_get_verification_code">获取验证码</string>
+    <string name="register_phone_verification_code">请输入短信验证码</string>
+    <string name="register_password_confirm">请再次输入密码</string>
+    <string name="register_get_verification_code_60">%sS后获取</string>
+
     <string name="forgot_password_title">找回密码</string>
 
     <string name="common_confirm">确定</string>
+    <string name="common_submit">提交</string>
 
 </resources>

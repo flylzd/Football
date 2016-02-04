@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
+
+    <!--    <include layout="@layout/line_horizontal" />-->
+
+    <LinearLayout
+        style="@style/loginAndRegisterLayout"
+        android:layout_marginTop="@dimen/login_margin_top">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_login_phone" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            style="@style/loginAndRegisterEdit"
+            android:hint="@string/login_username_hint" />
+
+        <Button
+            android:id="@+id/btnVerificationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/verification_code_height"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/selector_bg_btn"
+            android:paddingLeft="@dimen/main_padding"
+            android:paddingRight="@dimen/main_padding"
+            android:text="@string/register_get_verification_code"
+            android:textColor="@drawable/color_text_btn" />
+
+    </LinearLayout>
+    <!--    <include layout="@layout/line_horizontal" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            style="@style/loginAndRegisterLayout"
+            android:layout_marginTop="@dimen/register_margin_top">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_verification_code" />
+
+            <EditText
+                android:id="@+id/etVerificationCode"
+                style="@style/loginAndRegisterEdit"
+                android:hint="@string/register_phone_verification_code" />
+
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal" />
+
+        <LinearLayout
+            style="@style/loginAndRegisterLayout">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_login_password" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/loginAndRegisterEdit"
+                android:hint="@string/login_password_hint" />
+
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal" />
+
+        <LinearLayout
+            style="@style/loginAndRegisterLayout">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_register_password_confirm" />
+
+            <EditText
+                android:id="@+id/etPasswordConfirm"
+                style="@style/loginAndRegisterEdit"
+                android:hint="@string/register_password_confirm" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/main_margin_top"
+        android:layout_marginRight="@dimen/main_margin_top"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/selector_bg_btn"
+        android:text="@string/common_submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_hint_textSize" />
+
+</LinearLayout>
