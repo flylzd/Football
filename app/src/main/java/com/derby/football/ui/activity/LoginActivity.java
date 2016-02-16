@@ -2,7 +2,6 @@ package com.derby.football.ui.activity;
 
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,10 +9,16 @@ import android.widget.TextView;
 
 import com.derby.football.R;
 import com.derby.football.api.API;
+import com.derby.football.api.ApiService;
 import com.derby.football.base.BaseActivity;
-import com.derby.football.utils.ResUtil;
+import com.derby.football.bean.UserBean;
 import com.derby.football.utils.ToastUtil;
 import com.derby.football.utils.UIHelper;
+import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -59,19 +64,47 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.btnLogin)
     void login() {
-//        if (checkLogin()){
-//            UIHelper.showRegisterActivity(this);
-//        }
+        if (checkLogin()){
+            String username = etUsername.getText().toString();
+            String password = etPassword.getText().toString();
+            performLogin(username,password);
+        }
+    }
 
-        API.getApiService().getBaidu().enqueue(new Callback<String>() {
+    private void performLogin(String mobile, String password) {
+
+        Gson gson = new Gson();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, ApiService.C1);
+        params.put(ApiService.I, "");
+        params.put(ApiService.T, "");
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "user");
+        p.put(ApiService.P_ACTION, "login");
+        Map<String, String> param = new HashMap<String, String>();
+//        param.put("mobile","13202018415");
+//        param.put("passwd","123456");
+        param.put("mobile", mobile);
+        param.put("passwd", password);
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        API.getApiService().login(params).enqueue(new Callback<UserBean>() {
             @Override
-            public void onResponse(Response<String> response, Retrofit retrofit) {
-                System.out.println("response : "  + response.toString());
+            public void onResponse(Response<UserBean> response, Retrofit retrofit) {
+
+                if (response.body().status < 0){ //返回失败
+                    ToastUtil.showShort(response.body().message);
+                    return;
+                }
+
+                Logger.d(response.body().data.toString());
+
             }
 
             @Override
             public void onFailure(Throwable t) {
-                System.out.println("t : "  + t.toString());
+
             }
         });
     }

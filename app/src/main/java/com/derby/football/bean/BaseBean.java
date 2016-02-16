@@ -1,7 +1,9 @@
 package com.derby.football.bean;
 
 
-public class BaseBean {
+import java.io.Serializable;
+
+public class BaseBean implements Serializable {
     public int status;
     public String  message;
 }

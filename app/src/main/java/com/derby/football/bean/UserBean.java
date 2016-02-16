@@ -13,5 +13,22 @@ public class UserBean extends BaseBean {
         public String imei;
         public String token;
         public int status;
+
+        @Override
+        public String toString() {
+            return "UserData{" +
+                    "id='" + id + '\'' +
+                    ", imei='" + imei + '\'' +
+                    ", token='" + token + '\'' +
+                    ", status=" + status +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "data=" + data +
+                '}';
     }
 }
