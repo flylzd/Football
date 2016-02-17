@@ -11,12 +11,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.api.ApiClient;
+import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.StatusBarCompat;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class BaseActivity extends AppCompatActivity {
+
+    protected final String TAG = this.getClass().getSimpleName();
 
     private static final int ERROR_LAYOUT_ID = 0;
 
@@ -33,6 +38,10 @@ public class BaseActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (null != extras) {
             getBundleExtras(extras);
+        }
+
+        if (isBindEventBus()) {
+            EventBus.getDefault().register(this);
         }
 
         onBeforeSetContentView();
@@ -55,6 +64,10 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+        if (isBindEventBus()) {
+            EventBus.getDefault().unregister(this);
+        }
+        ApiClient.cancel(TAG);
     }
 
     protected void getBundleExtras(Bundle extras) {
@@ -114,6 +127,21 @@ public class BaseActivity extends AppCompatActivity {
     public void setTitle(String title) {
         if (toolbarTitle != null) {
             toolbarTitle.setText(title);
+        }
+    }
+
+    protected boolean isBindEventBus() {
+        return true;
+    }
+
+
+    protected void onEventBusHandler(EventCenter eventCenter) {
+
+    }
+
+    public void onEventMainThread(EventCenter eventCenter) {
+        if (null != eventCenter) {
+            onEventBusHandler(eventCenter);
         }
     }
 

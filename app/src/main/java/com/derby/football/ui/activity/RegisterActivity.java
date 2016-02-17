@@ -12,9 +12,9 @@ import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.utils.ToastUtil;
 import com.derby.football.widget.LoadingDialog;
+import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity {
@@ -53,7 +53,8 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
-        loadingDialog = new LoadingDialog(this);
+//        loadingDialog = new LoadingDialog(this);
+
     }
 
     @OnClick({R.id.btnVerificationCode, R.id.btnRegister})
@@ -105,5 +106,6 @@ public class RegisterActivity extends BaseActivity {
         }
         return true;
     }
+    
 
 }

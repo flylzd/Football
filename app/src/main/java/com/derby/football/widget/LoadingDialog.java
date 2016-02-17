@@ -24,8 +24,8 @@ public class LoadingDialog  {
         dialog = new Dialog(context,R.style.loadingDialogStyle);
         dialog.getWindow().setWindowAnimations(R.style.loadingDialogAnimStyle);
         dialog.setContentView(R.layout.dialog_loading);
-//        dialog.setCancelable(false);
-//        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
 
         tvLoadingMsg = (TextView)dialog.findViewById(R.id.tvLoadingMsg);
         tvLoadingMsg.setText("正在加载...");

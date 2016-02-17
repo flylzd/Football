@@ -10,9 +10,13 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.derby.football.eventbus.EventCenter;
+
 import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public abstract class BaseLazyFragment extends Fragment {
 
@@ -36,13 +40,13 @@ public abstract class BaseLazyFragment extends Fragment {
         mContext = activity;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (isBindEventBus()) {
-//            EventBus.getDefault().register(this);
-//        }
-//    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (isBindEventBus()) {
+            EventBus.getDefault().register(this);
+        }
+    }
 
     @Nullable
     @Override
@@ -77,9 +81,9 @@ public abstract class BaseLazyFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        if (isBindEventBus()) {
-//            EventBus.getDefault().unregister(this);
-//        }
+        if (isBindEventBus()) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override
@@ -180,5 +184,19 @@ public abstract class BaseLazyFragment extends Fragment {
 
     protected View getRootView() {
         return rootView;
+    }
+
+    protected boolean isBindEventBus() {
+        return true;
+    }
+
+    protected void onEventBusHandler(EventCenter eventCenter) {
+
+    }
+
+    public void onEventMainThread(EventCenter eventCenter) {
+        if (null != eventCenter) {
+            onEventBusHandler(eventCenter);
+        }
     }
 }
