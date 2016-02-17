@@ -42,8 +42,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:visibility="gone"
+        android:id="@+id/contentLayout"
         android:layout_height="wrap_content">
-
 
         <LinearLayout
             style="@style/loginAndRegisterLayout"
@@ -98,18 +99,18 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/main_margin_top"
+            android:layout_marginRight="@dimen/main_margin_top"
+            android:layout_marginTop="@dimen/main_margin_top"
+            android:background="@drawable/selector_bg_btn"
+            android:text="@string/common_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_hint_textSize" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/main_margin_top"
-        android:layout_marginRight="@dimen/main_margin_top"
-        android:layout_marginTop="@dimen/main_margin_top"
-        android:background="@drawable/selector_bg_btn"
-        android:text="@string/common_submit"
-        android:textColor="@color/white"
-        android:textSize="@dimen/login_hint_textSize" />
+    </LinearLayout>
 
 </LinearLayout>

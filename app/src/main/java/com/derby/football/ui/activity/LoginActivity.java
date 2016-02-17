@@ -16,6 +16,7 @@ import com.derby.football.config.AppConfig;
 import com.derby.football.utils.SPUtil;
 import com.derby.football.utils.ToastUtil;
 import com.derby.football.utils.UIHelper;
+import com.derby.football.widget.LoadingDialog;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
@@ -48,6 +49,7 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.tvForgotPassword)
     TextView tvForgotPassword;
 
+    private LoadingDialog loadingDialog;
 
     @Override
     protected int getLayoutId() {
@@ -61,7 +63,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
-
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.setMessage("正在获取...");
     }
 
     @OnClick(R.id.btnLogin)
@@ -117,12 +120,14 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.tvRegister)
     void register() {
-        UIHelper.showRegisterActivity(this);
+//        UIHelper.showRegisterActivity(this);
+        loadingDialog.show();
     }
 
     @OnClick(R.id.tvForgotPassword)
     void forgotPassword() {
-        UIHelper.showRegisterActivity(this);
+//        UIHelper.showRegisterActivity(this);
+        loadingDialog.dismiss();
     }
 
     private boolean checkLogin() {

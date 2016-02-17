@@ -6,12 +6,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.utils.ToastUtil;
+import com.derby.football.widget.LoadingDialog;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity {
@@ -28,12 +31,15 @@ public class RegisterActivity extends BaseActivity {
     EditText etPasswordConfirm;
     @Bind(R.id.btnRegister)
     Button btnRegister;
+    @Bind(R.id.contentLayout)
+    LinearLayout contentLayout;
 
     private String phone;
     private String verificationCode;
     private String password;
     private String confirmPassword;
 
+    private LoadingDialog loadingDialog;
 
     @Override
     protected int getLayoutId() {
@@ -43,6 +49,11 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected int getToolbarTitle() {
         return R.string.register_title;
+    }
+
+    @Override
+    protected void initViewsAndEvents(Bundle savedInstanceState) {
+        loadingDialog = new LoadingDialog(this);
     }
 
     @OnClick({R.id.btnVerificationCode, R.id.btnRegister})
@@ -73,25 +84,26 @@ public class RegisterActivity extends BaseActivity {
         password = etPassword.getText().toString();
         confirmPassword = etPasswordConfirm.getText().toString();
 
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             ToastUtil.showShortCenter(R.string.login_password_hint);
-            return  false;
+            return false;
         }
 
-        if (TextUtils.isEmpty(verificationCode)){
+        if (TextUtils.isEmpty(verificationCode)) {
             ToastUtil.showShortCenter(R.string.register_phone_verification_code);
-            return  false;
+            return false;
         }
 
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             ToastUtil.showShortCenter(R.string.login_password_hint);
-            return  false;
+            return false;
         }
 
-        if (TextUtils.isEmpty(confirmPassword)){
+        if (TextUtils.isEmpty(confirmPassword)) {
             ToastUtil.showShortCenter(R.string.register_password_confirm);
-            return  false;
+            return false;
         }
         return true;
     }
+
 }
