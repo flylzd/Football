@@ -12,6 +12,8 @@ import com.derby.football.api.API;
 import com.derby.football.api.ApiService;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.bean.UserBean;
+import com.derby.football.config.AppConfig;
+import com.derby.football.utils.SPUtil;
 import com.derby.football.utils.ToastUtil;
 import com.derby.football.utils.UIHelper;
 import com.google.gson.Gson;
@@ -98,8 +100,12 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
 
-                Logger.d(response.body().data.toString());
+                AppConfig.IMEI = response.body().data.imei;
+                AppConfig.TOKEN = response.body().data.token;
+                SPUtil.put(LoginActivity.this,AppConfig.IMEI_KEY,AppConfig.IMEI);
+                SPUtil.put(LoginActivity.this,AppConfig.TOKEN_KEY,AppConfig.TOKEN);
 
+                UIHelper.showMainActivity(LoginActivity.this);
             }
 
             @Override

@@ -6,6 +6,12 @@
 
     <color name="windowBackground">#f5f5f9</color>
 
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="translucent">#e0000000</color>
+
     <color name="toolbarBg">#38b549</color>
     <color name="mainBg">#f5f5f9</color>
     <color name="defaultHint">#cacad1</color>
@@ -15,15 +21,11 @@
     <color name="main_button_bg">#34b54a</color>
     <color name="main_button_bg_pressed">#38b589</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-
-    <color name="transparent">#00000000</color>
-    <color name="translucent">#e0000000</color>
-
     <color name="enabled_false">#cecece</color>
 
     <!-- 登陆-->
     <color name="login_text_bottom">#38b549</color>
+
+    <color name="main_tab_rg_bg">#f9f9f9</color>
 
 </resources>

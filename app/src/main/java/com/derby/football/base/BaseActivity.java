@@ -83,9 +83,9 @@ public class BaseActivity extends AppCompatActivity {
                 }
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
             }
-        }
-        if (isDisplayBackEnabled()) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (isDisplayBackEnabled()) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
         }
     }
 

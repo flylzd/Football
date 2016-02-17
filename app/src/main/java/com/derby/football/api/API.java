@@ -13,31 +13,30 @@ public class API {
     private static String BASE_URL = "http://api.zxyqx.top/";
     private static ApiService apiService;
 
-    public static ApiService getApiService() {
-        if (apiService == null) {
-            synchronized (API.class) {
-                if (apiService == null) {
+//    public static ApiService getApiService() {
+//        if (apiService == null) {
+//            synchronized (API.class) {
+//                if (apiService == null) {
+//
+//                    Retrofit retrofit = new Retrofit.Builder()
+//                                        .baseUrl(BASE_URL)
+//                                        .addConverterFactory(GsonConverterFactory.create())
+//                                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                                        .build();
+//                    apiService = retrofit.create(ApiService.class);
+//                }
+//            }
+//        }
+//        return apiService;
+//    }
 
-                    Retrofit retrofit = new Retrofit.Builder()
-                                        .baseUrl(BASE_URL)
-                                        .addConverterFactory(GsonConverterFactory.create())
-                                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                                        .build();
-                    apiService = retrofit.create(ApiService.class);
-                }
-            }
-        }
-        return apiService;
+
+    public static ApiService getApiService() {
+        return createApiService(ApiService.class);
     }
 
-
-
-//    public static ApiService getApiService() {
-//        return createApiService(ApiService.class);
-//    }
-//
-//    public static <T> T createApiService(Class<T> clazz) {
-//        return RetrofitUtil.createApiService(clazz,BASE_URL);
-//    }
+    public static <T> T createApiService(Class<T> clazz) {
+        return RetrofitUtil.createApiService(clazz,BASE_URL);
+    }
 
 }

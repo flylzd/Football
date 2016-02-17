@@ -28,7 +28,7 @@ public class UserBean extends BaseBean {
     @Override
     public String toString() {
         return "UserBean{" +
-                "data=" + data +
+                "data=" + data.toString() +
                 '}';
     }
 }

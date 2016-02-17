@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Football</string>
 
+
+    <string name="main_tab_team">球队</string>
+    <string name="main_tab_find">发现</string>
+    <string name="main_tab_mine">我的</string>
+
     <string name="login_title">登陆</string>
     <string name="login_username_hint">请输入手机号码</string>
     <string name="login_password_hint">请输入密码</string>
