@@ -1,11 +1,9 @@
 package com.derby.football.base;
 
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -15,7 +13,6 @@ import com.derby.football.api.ApiClient;
 import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.StatusBarCompat;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 

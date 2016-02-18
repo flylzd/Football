@@ -15,6 +15,8 @@
     <string name="register_phone_verification_code">请输入短信验证码</string>
     <string name="register_password_confirm">请再次输入密码</string>
     <string name="register_get_verification_code_60">%sS后重获</string>
+    
+    <string name="verification_code_send">验证码已经发送</string>
 
     <string name="forgot_password_title">找回密码</string>
 

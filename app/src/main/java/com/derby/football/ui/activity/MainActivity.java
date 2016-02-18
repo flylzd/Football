@@ -11,13 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.derby.football.R;
-import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.ui.fragment.FindFragment;
 import com.derby.football.ui.fragment.MineFragment;
 import com.derby.football.ui.fragment.TeamFragment;
 import com.derby.football.utils.ToastUtil;
-import com.orhanobut.logger.Logger;
 
 import butterknife.Bind;
 import butterknife.OnClick;

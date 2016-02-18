@@ -8,29 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.derby.football.R;
-import com.derby.football.api.API;
+
 import com.derby.football.api.ApiClient;
-import com.derby.football.api.ApiService;
 import com.derby.football.base.BaseActivity;
-import com.derby.football.bean.UserBean;
-import com.derby.football.config.AppConfig;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
-import com.derby.football.utils.SPUtil;
 import com.derby.football.utils.ToastUtil;
 import com.derby.football.utils.UIHelper;
 import com.derby.football.widget.LoadingDialog;
-import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 public class LoginActivity extends BaseActivity {
 
