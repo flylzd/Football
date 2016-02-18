@@ -89,6 +89,35 @@ public class ApiClient {
         });
     }
 
+    public static void register(final Context context, Object tag, String phone, String verificationCode, String password) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, ApiService.C1);
+        params.put(ApiService.I, "");
+        params.put(ApiService.T, "");
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "user");
+        p.put(ApiService.P_ACTION, "register");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("mobile", phone);
+        param.put("passwd", password);
+        param.put("repasswd", password);
+        param.put("code",verificationCode);  //默认为888888
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<UserBean> call = API.getApiService().login(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<UserBean>() {
+            @Override
+            void onSuccess(Response<UserBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_REGISTER);
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+    }
+
     abstract static class ResponseCallback<T> implements retrofit.Callback<T> {
 
         @Override

@@ -12,9 +12,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.derby.football.R;
+import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
+import com.derby.football.config.EventBusCode;
+import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.ResUtil;
 import com.derby.football.utils.ToastUtil;
+import com.derby.football.utils.UIHelper;
 import com.derby.football.widget.LoadingDialog;
 import com.orhanobut.logger.Logger;
 
@@ -59,7 +63,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
-//        loadingDialog = new LoadingDialog(this);
+        loadingDialog = new LoadingDialog(this);
 
     }
 
@@ -78,7 +82,6 @@ public class RegisterActivity extends BaseActivity {
     private void getVerificationCode() {
 
         ToastUtil.showShortCenter(R.string.verification_code_send);
-//        handler.postDelayed(runnable, TIME);
         handler.post(runnable);
 
         if (!isShowRegisterLayout) {
@@ -90,7 +93,10 @@ public class RegisterActivity extends BaseActivity {
 
     private void register() {
         if (checkRegister()) {
+            loadingDialog.setMessage(R.string.loading_submit);
+            loadingDialog.show();
 
+            ApiClient.register(this, TAG, phone, verificationCode, password);
         }
     }
 
@@ -101,7 +107,7 @@ public class RegisterActivity extends BaseActivity {
         confirmPassword = etPasswordConfirm.getText().toString();
 
         if (TextUtils.isEmpty(phone)) {
-            ToastUtil.showShortCenter(R.string.login_password_hint);
+            ToastUtil.showShortCenter(R.string.login_username_hint);
             return false;
         }
 
@@ -120,6 +126,20 @@ public class RegisterActivity extends BaseActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onEventBusHandler(EventCenter eventCenter) {
+
+        loadingDialog.dismiss();
+        switch (eventCenter.getEventCode()) {
+            case EventBusCode.SUCCESS_REGISTER:
+                this.finish();
+//                UIHelper.showMainActivity(this);
+                ToastUtil.showShortCenter(R.string.register_success);
+                this.finish();
+                break;
+        }
     }
 
     private int timeIndex = 60;

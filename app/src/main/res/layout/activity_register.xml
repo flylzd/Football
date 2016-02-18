@@ -76,6 +76,8 @@
 
             <EditText
                 android:id="@+id/etPassword"
+                android:inputType="textPassword"
+                android:singleLine="true"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/login_password_hint" />
 
@@ -93,6 +95,8 @@
                 android:src="@drawable/ic_register_password_confirm" />
 
             <EditText
+                android:inputType="textPassword"
+                android:singleLine="true"
                 android:id="@+id/etPasswordConfirm"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/register_password_confirm" />

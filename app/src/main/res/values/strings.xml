@@ -15,7 +15,8 @@
     <string name="register_phone_verification_code">请输入短信验证码</string>
     <string name="register_password_confirm">请再次输入密码</string>
     <string name="register_get_verification_code_60">%sS后重获</string>
-    
+    <string name="register_success">注册成功</string>
+
     <string name="verification_code_send">验证码已经发送</string>
 
     <string name="forgot_password_title">找回密码</string>
@@ -24,6 +25,8 @@
     <string name="common_submit">提交</string>
 
     <string name="loading_login">正在登陆...</string>
+    <string name="loading_submit">正在提交数据...</string>
+<!--    <string name="loading_register">正在登陆...</string>-->
 
     <string name="network_failure">请求失败</string>
 

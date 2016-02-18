@@ -36,6 +36,8 @@ public class API {
     }
 
     public static <T> T createApiService(Class<T> clazz) {
+        RetrofitUtil.getOkHttpConfig().HTTP_CONNECT_TIMEOUT = 10* 1000;
+        RetrofitUtil.getOkHttpConfig().HTTP_READ_TIMEOUT = 10* 1000;
         return RetrofitUtil.createApiService(clazz,BASE_URL);
     }
 
