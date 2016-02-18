@@ -40,4 +40,8 @@ dependencies {
 
     compile 'com.timehop.fragmentswitcher:library:1.1.2'
     compile 'de.greenrobot:eventbus:2.4.0'
+
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    //Optional: see how to use the utility.
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
 }

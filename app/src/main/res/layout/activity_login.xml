@@ -26,6 +26,10 @@
 
             <EditText
                 android:id="@+id/etUsername"
+                android:phoneNumber="true"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:digits="@string/digits_phone"
                 style="@style/loginAndRegisterEdit"
                 android:text="13202018415"
                 android:hint="@string/login_username_hint" />
@@ -44,7 +48,7 @@
 
             <EditText
                 android:id="@+id/etPassword"
-                android:inputType="textPassword"
+                android:password="true"
                 android:text="123456"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/login_password_hint" />

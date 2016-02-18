@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.activity.MainActivity" android:launchMode="singleTask" />
 
     </application>

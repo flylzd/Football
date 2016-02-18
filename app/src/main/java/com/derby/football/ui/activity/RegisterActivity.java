@@ -51,6 +51,27 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean isShowRegisterLayout = false;
 
+    private int timeIndex = 60;
+    private int TIME = 1000;
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            handler.postDelayed(this, TIME);
+//            timeIndex--;
+            btnVerificationCode.setEnabled(false);
+            String timeHint = String.format(ResUtil.getString(R.string.register_get_verification_code_60), timeIndex--);
+            btnVerificationCode.setText(timeHint);
+            if (timeIndex < 0) {
+                btnVerificationCode.setEnabled(true);
+                btnVerificationCode.setText(R.string.register_get_verification_code);
+                timeIndex = 60;
+                return;
+            }
+        }
+    };
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register;
@@ -142,25 +163,14 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
-    private int timeIndex = 60;
-    private int TIME = 1000;
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            timeIndex--;
-            btnVerificationCode.setEnabled(false);
-            String timeHint = String.format(ResUtil.getString(R.string.register_get_verification_code_60), timeIndex);
-            btnVerificationCode.setText(timeHint);
-            if (timeIndex < 0) {
-                btnVerificationCode.setEnabled(true);
-                btnVerificationCode.setText(R.string.register_get_verification_code);
-                timeIndex = 60;
-                return;
-            }
-            handler.postDelayed(runnable, TIME);
-        }
-    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
+
+
 
 
 }

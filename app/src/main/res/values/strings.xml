@@ -9,6 +9,7 @@
     <string name="login_title">登陆</string>
     <string name="login_username_hint">请输入手机号码</string>
     <string name="login_password_hint">请输入密码</string>
+    <string name="login_phone_number_error">手机号码格式错误</string>
 
     <string name="register_title">注册</string>
     <string name="register_get_verification_code">获取验证码</string>
@@ -16,10 +17,17 @@
     <string name="register_password_confirm">请再次输入密码</string>
     <string name="register_get_verification_code_60">%sS后重获</string>
     <string name="register_success">注册成功</string>
+    <string name="register_phone_error">请填写正确的手机号</string>
 
     <string name="verification_code_send">验证码已经发送</string>
 
     <string name="forgot_password_title">找回密码</string>
+    
+    
+    <string name="find_tab_match">赛事</string>
+    <string name="find_tab_team">球队</string>
+    <string name="find_tab_court">球场</string>
+    
 
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
@@ -27,6 +35,8 @@
     <string name="loading_login">正在登陆...</string>
     <string name="loading_submit">正在提交数据...</string>
 <!--    <string name="loading_register">正在登陆...</string>-->
+
+    <string name="digits_phone">1234567890</string>
 
     <string name="network_failure">请求失败</string>
 

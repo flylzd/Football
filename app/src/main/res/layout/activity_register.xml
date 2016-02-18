@@ -21,6 +21,9 @@
 
         <EditText
             android:id="@+id/etPhone"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:digits="@string/digits_phone"
             style="@style/loginAndRegisterEdit"
             android:hint="@string/login_username_hint" />
 
@@ -57,6 +60,8 @@
                 android:src="@drawable/ic_verification_code" />
 
             <EditText
+                android:digits="@string/digits_phone"
+                android:inputType="phone"
                 android:id="@+id/etVerificationCode"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/register_phone_verification_code" />
@@ -76,8 +81,7 @@
 
             <EditText
                 android:id="@+id/etPassword"
-                android:inputType="textPassword"
-                android:singleLine="true"
+                android:password="true"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/login_password_hint" />
 
@@ -95,8 +99,7 @@
                 android:src="@drawable/ic_register_password_confirm" />
 
             <EditText
-                android:inputType="textPassword"
-                android:singleLine="true"
+                android:password="true"
                 android:id="@+id/etPasswordConfirm"
                 style="@style/loginAndRegisterEdit"
                 android:hint="@string/register_password_confirm" />
