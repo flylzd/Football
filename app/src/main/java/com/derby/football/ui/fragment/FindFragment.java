@@ -1,11 +1,7 @@
 package com.derby.football.ui.fragment;
 
 
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.derby.football.R;
 import com.derby.football.base.BaseFragment;
@@ -14,7 +10,6 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class FindFragment extends BaseFragment {
 
