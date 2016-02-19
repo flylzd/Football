@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.derby.football.R;
+import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseFragment;
 import com.derby.football.ui.adapter.InitialHeaderAdapter;
 import com.derby.football.ui.adapter.StringListAdapter;
@@ -58,6 +59,8 @@ public class FindCourtFragment extends BaseFragment implements SwipeRefreshLayou
 
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(top);
+
+        ApiClient.getArea(getActivity(), TAG, 0);
 
     }
 

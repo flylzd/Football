@@ -4,6 +4,7 @@ package com.derby.football.api;
 import android.content.Context;
 
 import com.derby.football.R;
+import com.derby.football.bean.AreaBean;
 import com.derby.football.bean.BaseBean;
 import com.derby.football.bean.UserBean;
 import com.derby.football.config.AppConfig;
@@ -29,6 +30,16 @@ public class ApiClient {
 
     private static Gson gson = new Gson();
 
+    private final static int PER_PAGE = 20;
+
+    /**
+     * 登陆
+     *
+     * @param context
+     * @param tag
+     * @param mobile
+     * @param password
+     */
     public static void login(final Context context, Object tag, String mobile, String password) {
 
         Map<String, String> params = new HashMap<String, String>();
@@ -78,8 +89,10 @@ public class ApiClient {
             @Override
             void onSuccess(Response<UserBean> response, Retrofit retrofit) {
 
+                AppConfig.UID = response.body().data.id;
                 AppConfig.IMEI = response.body().data.imei;
                 AppConfig.TOKEN = response.body().data.token;
+                SPUtil.put(context, AppConfig.UID_KEY, AppConfig.UID);
                 SPUtil.put(context, AppConfig.IMEI_KEY, AppConfig.IMEI);
                 SPUtil.put(context, AppConfig.TOKEN_KEY, AppConfig.TOKEN);
 
@@ -89,6 +102,15 @@ public class ApiClient {
         });
     }
 
+    /**
+     * 注册
+     *
+     * @param context
+     * @param tag
+     * @param phone
+     * @param verificationCode
+     * @param password
+     */
     public static void register(final Context context, Object tag, String phone, String verificationCode, String password) {
 
         Map<String, String> params = new HashMap<String, String>();
@@ -102,20 +124,95 @@ public class ApiClient {
         param.put("mobile", phone);
         param.put("passwd", password);
         param.put("repasswd", password);
-        param.put("code",verificationCode);  //默认为888888
+        param.put("code", verificationCode);  //默认为888888
         p.put(ApiService.P_PARAM, gson.toJson(param));
         params.put(ApiService.P, gson.toJson(p));
 
-        Call<UserBean> call = API.getApiService().login(params);
+        Call<BaseBean> call = API.getApiService().register(params);
         addCall(tag, call);
-        call.enqueue(new ResponseCallback<UserBean>() {
+        call.enqueue(new ResponseCallback<BaseBean>() {
             @Override
-            void onSuccess(Response<UserBean> response, Retrofit retrofit) {
+            void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
 
                 EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_REGISTER);
                 EventBus.getDefault().post(eventCenter);
             }
         });
+    }
+
+    /**
+     * 获取地区
+     *
+     * @param context
+     * @param tag
+     * @param areaID  父级地区ID，为0或不传时返回省份
+     */
+    public static void getArea(final Context context, final Object tag, int areaID) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "area");
+        p.put(ApiService.P_ACTION, "getarea");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("parentID", String.valueOf(areaID));
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<AreaBean> call = API.getApiService().getArea(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<AreaBean>() {
+            @Override
+            void onSuccess(Response<AreaBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT);
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+
+    }
+
+    /**
+     * 获取球场列表
+     *
+     * @param context
+     * @param tag
+     * @param areaID
+     * @param nowPage
+     */
+    public static void getCourtList(final Context context, final Object tag, String areaID, int nowPage) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "merchant");
+        p.put(ApiService.P_ACTION, "getlist");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("areaID", areaID);
+        param.put("nowPage", String.valueOf(nowPage));
+        param.put("perPage", String.valueOf(PER_PAGE));
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<BaseBean> call = API.getApiService().getCourtList(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<BaseBean>() {
+            @Override
+            void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT);
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+    }
+
+
+    private static String getUID() {
+        return "c" + AppConfig.UID;
     }
 
     abstract static class ResponseCallback<T> implements retrofit.Callback<T> {
@@ -151,10 +248,10 @@ public class ApiClient {
             throw new NullPointerException("the tag is null");
         }
 
-        if (apiCall.size() == 0){
+        if (apiCall.size() == 0) {
             List<Call<?>> callList = new ArrayList<Call<?>>();
             callList.add(call);
-            apiCall.put(tag,callList);
+            apiCall.put(tag, callList);
             return;
         }
 
@@ -164,7 +261,7 @@ public class ApiClient {
             } else {
                 List<Call<?>> callList = new ArrayList<Call<?>>();
                 callList.add(call);
-                apiCall.put(tag,callList);
+                apiCall.put(tag, callList);
             }
         }
     }

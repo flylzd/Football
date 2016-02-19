@@ -10,4 +10,6 @@ public interface EventBusCode {
 
     int SUCCESS_REGISTER = 2000;
 
+    int SUCCESS_FIND_COURT = 3000;
+
 }

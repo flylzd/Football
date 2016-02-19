@@ -1,6 +1,8 @@
 package com.derby.football.api;
 
 
+import com.derby.football.bean.AreaBean;
+import com.derby.football.bean.BaseBean;
 import com.derby.football.bean.UserBean;
 
 import java.util.Map;
@@ -29,4 +31,17 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user/index.php")
     Call<UserBean> login(@FieldMap Map<String,String> params);
+
+    @FormUrlEncoded
+    @POST("user/index.php")
+    Call<BaseBean> register(@FieldMap Map<String,String> params);
+
+    @FormUrlEncoded
+    @POST("user/index.php")
+    Call<AreaBean> getArea(@FieldMap Map<String,String> params);
+
+    @FormUrlEncoded
+    @POST("user/index.php")
+    Call<BaseBean> getCourtList(@FieldMap Map<String,String> params);
+
 }
