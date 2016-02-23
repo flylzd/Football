@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/selector_rounded_square_bg"
+    android:clickable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="6dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="6dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="星期5"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="2月9号" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/find_reserve_btn_height"
+        android:background="@drawable/selector_find_reserve_btn"
+        android:gravity="center"
+        android:text="预定"
+        android:textColor="@drawable/text_reserve_btn" />
+
+</LinearLayout>
+

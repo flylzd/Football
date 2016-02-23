@@ -22,12 +22,12 @@
     <string name="verification_code_send">验证码已经发送</string>
 
     <string name="forgot_password_title">找回密码</string>
-    
-    
+
     <string name="find_tab_match">赛事</string>
     <string name="find_tab_team">球队</string>
     <string name="find_tab_court">球场</string>
-    
+
+    <string name="find_court_details_title">场地详情</string>
 
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>

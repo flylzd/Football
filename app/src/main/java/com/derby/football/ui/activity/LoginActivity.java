@@ -78,7 +78,8 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.tvForgotPassword)
     void forgotPassword() {
-        UIHelper.showRegisterActivity(this);
+//        UIHelper.showRegisterActivity(this);
+        UIHelper.showFindCourtDetailActivity(this);
     }
 
     private boolean checkLogin() {

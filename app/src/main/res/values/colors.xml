@@ -23,6 +23,11 @@
 
     <color name="enabled_false">#cecece</color>
 
+    <color name="rounded_square_bg_p">#d6d6da</color>
+    <color name="rounded_square_border">#e6e6e6</color>
+    <color name="square_bg_p">#dfdfdf</color>
+    <color name="btn_reserve_border">#ff8915</color>
+
     <!-- 登陆-->
     <color name="login_text_bottom">#38b549</color>
 

@@ -1,10 +1,10 @@
 package com.derby.football.utils;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.derby.football.ui.activity.FindCourtDetailActivity;
 import com.derby.football.ui.activity.MainActivity;
 import com.derby.football.ui.activity.RegisterActivity;
 
@@ -17,6 +17,14 @@ public class UIHelper {
 
     public static void showMainActivity(Context context ) {
         Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 场地详细
+     */
+    public static void showFindCourtDetailActivity(Context context ) {
+        Intent intent = new Intent(context, FindCourtDetailActivity.class);
         context.startActivity(intent);
     }
 
