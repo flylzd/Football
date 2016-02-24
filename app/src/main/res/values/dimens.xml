@@ -20,6 +20,12 @@
     <dimen name="find_reserve_layout_height">140dp</dimen>
     <dimen name="find_reserve_btn_height">30dp</dimen>
 
+    <dimen name="find_court_padding_left">10dp</dimen>
+    <dimen name="find_court_padding_right">16dp</dimen>
+
+    <dimen name="find_court_detail_right_width">100dp</dimen>
+
+
     <!-- 字体-->
     <dimen name="login_hint_textSize">20sp</dimen>
     

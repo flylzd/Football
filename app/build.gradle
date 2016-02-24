@@ -48,4 +48,5 @@ dependencies {
     compile 'com.malinskiy:superrecyclerview:1.1.2'
 
     compile 'com.eowise:recyclerview-stickyheaders:0.5.2@aar'
+    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
 }

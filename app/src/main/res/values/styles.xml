@@ -79,14 +79,53 @@
         <item name="android:background">@drawable/selector_rounded_square_bg</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:clickable">true</item>
-        <item name="paddingBottom">6dp</item>
-        <item name="paddingTop">6dp</item>
-        <item name="paddingLeft">8dp</item>
-        <item name="paddingRight">8dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginBottom">16dp</item>
         <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="findCourtSquareText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_square_bg</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/find_court_padding_left</item>
+        <item name="android:paddingRight">@dimen/find_court_padding_right</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="findCourtDetailsRightText">
+        <item name="android:layout_width">@dimen/find_court_detail_right_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#9b9b9b</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center_vertical|right</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">3dp</item>
+    </style>
+
+    <style name="findCourtDetailsRightTextSub" parent="findCourtDetailsRightText">
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="findCourtDetailsLeftText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center_vertical|left</item>
     </style>
 
 </resources>

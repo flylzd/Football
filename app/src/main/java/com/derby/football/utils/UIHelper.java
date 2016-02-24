@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.derby.football.ui.activity.FindCourtDetailActivity;
+import com.derby.football.ui.activity.FindCourtOrderActivity;
 import com.derby.football.ui.activity.MainActivity;
 import com.derby.football.ui.activity.RegisterActivity;
 
@@ -25,6 +26,14 @@ public class UIHelper {
      */
     public static void showFindCourtDetailActivity(Context context ) {
         Intent intent = new Intent(context, FindCourtDetailActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 场次订购
+     */
+    public static void showFindCourtOrderActivity(Context context ) {
+        Intent intent = new Intent(context, FindCourtOrderActivity.class);
         context.startActivity(intent);
     }
 

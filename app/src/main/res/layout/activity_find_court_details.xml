@@ -6,35 +6,201 @@
 
     <include layout="@layout/include_toolbar" />
 
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rlvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
-                android:id="@+id/llyReserve1"
-                style="@style/findCourtRoundSquareLayout">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_square_bg"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:id="@+id/ivCourt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_launcher" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/ivCourt"
+                        android:layout_alignRight="@+id/ivCourt"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="4dp"
+                        android:text="4" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:text="1月23号，好日子呢。欢迎你的到来呢。" />
 
             </LinearLayout>
 
+            <TextView
+                style="@style/findCourtSquareText"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_login_phone"
+                android:drawableRight="@mipmap/arrow"
+                android:text="020-22227889" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/findCourtSquareText"
+                android:drawableLeft="@drawable/ic_login_phone"
+                android:drawableRight="@mipmap/arrow"
+                android:ellipsize="end"
+                android:text="广东省广州市天河区北路" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/findCourtDetailsRightText"
+                        android:text="@string/find_court_details_site_facilities" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_floor" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include layout="@layout/line_horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/findCourtDetailsRightText"
+                        android:text="@string/find_court_details_venues_service" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_more_service" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_venues_sell_product" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_equipment_rental" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_bath_facilities" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_square_bg"
+                        android:clickable="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/findCourtDetailsRightTextSub"
+                            android:text="@string/find_court_details_parking" />
+
+                        <TextView
+                            style="@style/findCourtDetailsLeftText"
+                            android:text="@string/find_court_details_floor" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
-    </HorizontalScrollView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rlvDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:dividerHeight="40dp" />
-
+    </ScrollView>
 
 </LinearLayout>
+

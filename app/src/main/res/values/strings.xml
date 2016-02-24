@@ -28,6 +28,14 @@
     <string name="find_tab_court">球场</string>
 
     <string name="find_court_details_title">场地详情</string>
+    <string name="find_court_details_site_facilities">场地设施</string>
+    <string name="find_court_details_venues_service">场馆服务</string>
+    <string name="find_court_details_floor">地板</string>
+    <string name="find_court_details_more_service">更多服务</string>
+    <string name="find_court_details_venues_sell_product">场馆卖品</string>
+    <string name="find_court_details_equipment_rental">器材租借</string>
+    <string name="find_court_details_bath_facilities">洗浴设施</string>
+    <string name="find_court_details_parking">停车</string>
 
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>

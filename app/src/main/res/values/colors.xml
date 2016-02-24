@@ -28,6 +28,12 @@
     <color name="square_bg_p">#dfdfdf</color>
     <color name="btn_reserve_border">#ff8915</color>
 
+    <color name="find_court_order_can_reserve">#6ad449</color>
+    <color name="find_court_order_has_reserve">#cdcdcd</color>
+    <color name="find_court_order_my_reserve">#009ff0</color>
+
+    <color name="find_court_order_date_line">#c2c2c2</color>
+
     <!-- 登陆-->
     <color name="login_text_bottom">#38b549</color>
 

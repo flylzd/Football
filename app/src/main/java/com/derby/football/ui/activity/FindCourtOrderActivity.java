@@ -1,30 +1,31 @@
 package com.derby.football.ui.activity;
 
+
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
-import com.derby.football.ui.adapter.FindCourtDateAdapter;
+import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
 import com.derby.football.utils.FullyLinearLayoutManager;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class FindCourtOrderActivity extends BaseActivity {
 
 
-public class FindCourtDetailActivity extends BaseActivity {
+    @Bind(R.id.recyclerView)
+    RecyclerView recyclerView;
 
-
-    @Bind(R.id.rlvDate)
-    RecyclerView rlvDate;
-
-    private FindCourtDateAdapter adapter;
-
-    private final static int SPAN_COUNT = 5;
+    private FindCourtOrderDateAdapter adapter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_find_court_details;
+        return R.layout.activity_find_court_order;
     }
 
     @Override
@@ -35,14 +36,16 @@ public class FindCourtDetailActivity extends BaseActivity {
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
 
-        adapter = new FindCourtDateAdapter();
+        adapter = new FindCourtOrderDateAdapter();
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rlvDate.setLayoutManager(layoutManager);
-        rlvDate.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new VerticalDividerItemDecoration.Builder(this).build());
+        recyclerView.setAdapter(adapter);
 //        rlvDate.setVisibility(View.VISIBLE);
     }
 
 }
+

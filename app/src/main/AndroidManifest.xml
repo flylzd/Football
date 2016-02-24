@@ -23,6 +23,7 @@
         <activity android:name=".ui.activity.RegisterActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.activity.MainActivity" android:launchMode="singleTask" />
         <activity android:name=".ui.activity.FindCourtDetailActivity" />
+        <activity android:name=".ui.activity.FindCourtOrderActivity" />
 
     </application>
 
