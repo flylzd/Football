@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
+import com.derby.football.ui.adapter.ScrollTableAdapter;
 import com.derby.football.utils.FullyLinearLayoutManager;
+import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
 
@@ -21,7 +23,11 @@ public class FindCourtOrderActivity extends BaseActivity {
 //    SuperRecyclerView recyclerView;
     RecyclerView recyclerView;
 
+    @Bind(R.id.tableFixHeaders)
+    TableFixHeaders tableFixHeaders;
+
     private FindCourtOrderDateAdapter adapter;
+    private ScrollTableAdapter scrollTableAdapter ;
 
     @Override
     protected int getLayoutId() {
@@ -37,6 +43,7 @@ public class FindCourtOrderActivity extends BaseActivity {
     protected void initViewsAndEvents(Bundle savedInstanceState) {
 
         adapter = new FindCourtOrderDateAdapter();
+        scrollTableAdapter = new ScrollTableAdapter(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 //        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
@@ -46,6 +53,8 @@ public class FindCourtOrderActivity extends BaseActivity {
 //        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 //        rlvDate.setVisibility(View.VISIBLE);
+
+        tableFixHeaders.setAdapter(scrollTableAdapter);
     }
 
 }
