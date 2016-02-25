@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.derby.football"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -49,4 +49,6 @@ dependencies {
 
     compile 'com.eowise:recyclerview-stickyheaders:0.5.2@aar'
     compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+
+    compile project(':tablefixheaders')
 }

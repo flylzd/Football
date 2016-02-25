@@ -2,27 +2,130 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <include layout="@layout/include_toolbar" />
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/find_court_order_date_height" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ddd" />
+        android:layout_weight="1"
+        android:background="@color/black">
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="@dimen/find_court_order_bottom_height"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/find_court_order_bottom_height"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/layoutHasReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivHasReserve"
+                    android:layout_width="@dimen/find_court_order_bottom_img_width"
+                    android:layout_height="@dimen/find_court_order_bottom_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/selector_find_court_order_has_reserve" />
+
+                <TextView
+                    android:id="@+id/tvHasReserve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivHasReserve"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/find_court_order_bottom_img_tv_margin_top"
+                    android:text="@string/find_court_order_has_reserve" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutCanReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="@dimen/find_court_order_bottom_img_img_margin_left"
+                android:layout_toLeftOf="@+id/layoutHasReserve"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivCanReserve"
+                    android:layout_width="@dimen/find_court_order_bottom_img_width"
+                    android:layout_height="@dimen/find_court_order_bottom_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/selector_find_court_order_can_reserve" />
+
+                <TextView
+                    android:id="@+id/tvCanReserve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivCanReserve"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/find_court_order_bottom_img_tv_margin_top"
+                    android:text="@string/find_court_order_can_reserve" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutMyReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/find_court_order_bottom_img_img_margin_left"
+                android:layout_toRightOf="@+id/layoutHasReserve"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivMyReserve"
+                    android:layout_width="@dimen/find_court_order_bottom_img_width"
+                    android:layout_height="@dimen/find_court_order_bottom_img_height"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/selector_find_court_order_my_reserve" />
+
+                <TextView
+                    android:id="@+id/tvMyReserve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivMyReserve"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/find_court_order_bottom_img_tv_margin_top"
+                    android:text="@string/find_court_order_my_reserve" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/selector_find_court_order_select_btn"
+            android:text="@string/find_court_order_select"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 </LinearLayout>

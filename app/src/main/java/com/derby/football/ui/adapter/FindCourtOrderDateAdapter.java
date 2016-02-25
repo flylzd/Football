@@ -17,6 +17,8 @@ import butterknife.OnClick;
 public class FindCourtOrderDateAdapter extends RecyclerView.Adapter<FindCourtOrderDateAdapter.ViewHolder> {
 
     private ViewHolder oldHolder;
+    private int oldPosition;
+    private int firstSelect = 0;
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -25,30 +27,33 @@ public class FindCourtOrderDateAdapter extends RecyclerView.Adapter<FindCourtOrd
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        System.out.println("oldHolder position " + position);
-        if (position == 0){
+        if (position == 0) {
             this.oldHolder = holder;
-            System.out.println("oldHolder position222 ==  " + position);
-            System.out.println("oldHolder itemView " + oldHolder.itemRootLayout);
-            holder.tvWeek.setSelected(true);
-            holder.tvDate.setSelected(true);
-            holder.lineView.setSelected(true);
+            oldHolder.tvWeek.setSelected(true);
+            oldHolder.tvDate.setSelected(true);
+            oldHolder.lineView.setSelected(true);
         }
-        holder.itemRootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (oldHolder.itemRootLayout.equals(v)){
-                    System.out.println("sanmesanme  ocClick -----------------------");
-                }
-                System.out.println("itemRootLayout " + oldHolder.itemRootLayout);
-                System.out.println("view " + v);
-//                if (holder.itemRootLayout)
-                System.out.println("test ocClick --------------------------");
-            }
-        });
 
+//        holder.itemRootLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (oldPosition != position) {
+//
+//                    holder.tvWeek.setSelected(true);
+//                    holder.tvDate.setSelected(true);
+//                    holder.lineView.setSelected(true);
+//
+//                    oldHolder.tvWeek.setSelected(false);
+//                    oldHolder.tvDate.setSelected(false);
+//                    oldHolder.lineView.setSelected(false);
+//
+//                    oldHolder = holder;
+//                    oldPosition = position;
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -56,7 +61,7 @@ public class FindCourtOrderDateAdapter extends RecyclerView.Adapter<FindCourtOrd
         return 7;
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.itemRootLayout)
         LinearLayout itemRootLayout;
@@ -67,13 +72,21 @@ public class FindCourtOrderDateAdapter extends RecyclerView.Adapter<FindCourtOrd
         @Bind(R.id.lineView)
         View lineView;
 
-//        @OnClick(R.id.itemRootLayout)
-//        public void onClick() {
-//            System.out.println("test ocClick --------------------------");
-//            tvWeek.setSelected(true);
-//            tvDate.setSelected(true);
-//            lineView.setSelected(true);
-//        }
+        @OnClick(R.id.itemRootLayout)
+        public void onClick() {
+
+            if (!oldHolder.equals(this)) {
+                this.tvWeek.setSelected(true);
+                this.tvDate.setSelected(true);
+                this.lineView.setSelected(true);
+
+                oldHolder.tvWeek.setSelected(false);
+                oldHolder.tvDate.setSelected(false);
+                oldHolder.lineView.setSelected(false);
+
+                oldHolder = this;
+            }
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);

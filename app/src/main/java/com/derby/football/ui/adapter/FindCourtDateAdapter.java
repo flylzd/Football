@@ -19,7 +19,7 @@ public class FindCourtDateAdapter extends RecyclerView.Adapter<FindCourtDateAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        System.out.println("holder position is " + position);
     }
 
     @Override

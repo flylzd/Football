@@ -36,6 +36,11 @@
     <string name="find_court_details_equipment_rental">器材租借</string>
     <string name="find_court_details_bath_facilities">洗浴设施</string>
     <string name="find_court_details_parking">停车</string>
+    <string name="find_court_order_title">场次选择</string>
+    <string name="find_court_order_select">选择场地</string>
+    <string name="find_court_order_can_reserve">可预订</string>
+    <string name="find_court_order_has_reserve">已预订</string>
+    <string name="find_court_order_my_reserve">我的预订</string>
 
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
