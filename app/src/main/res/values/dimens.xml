@@ -31,6 +31,13 @@
     <dimen name="find_court_order_bottom_img_height">15dp</dimen>
     <dimen name="find_court_order_bottom_img_tv_margin_top">4dp</dimen>
     <dimen name="find_court_order_bottom_img_img_margin_left">30dp</dimen>
+    <dimen name="find_court_order_bottom_my_reserve_height">50dp</dimen>
+    <dimen name="find_court_order_bottom_my_reserve_margin_top">15dp</dimen>
+
+    <dimen name="find_court_order_table_first_column_width">45dp</dimen>
+    <dimen name="find_court_order_table_column_width">58dp</dimen>
+    <dimen name="find_court_order_table_first_row_height">20dp</dimen>
+    <dimen name="find_court_order_table_row_height">35dp</dimen>
 
     <!-- 字体-->
     <dimen name="login_hint_textSize">20sp</dimen>

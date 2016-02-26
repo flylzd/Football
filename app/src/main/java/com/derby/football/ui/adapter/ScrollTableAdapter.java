@@ -5,8 +5,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.utils.ResUtil;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
 
 public class ScrollTableAdapter extends BaseTableAdapter {
@@ -14,14 +17,25 @@ public class ScrollTableAdapter extends BaseTableAdapter {
     private final Context context;
     private final LayoutInflater inflater;
 
+    private int firstColumnWidth;
+    private int columnWidth;
+    private int firstRowHeight;
+    private int rowHeight;
+
     public ScrollTableAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
+
+        firstColumnWidth = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_first_column_width);
+        columnWidth  = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_column_width);
+        firstRowHeight = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_first_row_height);
+        rowHeight = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_row_height);
+
     }
 
     @Override
     public int getRowCount() {
-        return 50;
+        return 14;
     }
 
     @Override
@@ -35,8 +49,14 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         int viewType = getItemViewType(row, column);
         switch (viewType) {
             case 0:
+                view = getHeaderFirst(row, column, convertView, parent);
+                break;
             case 1:
+                view = getHeader(row, column, convertView, parent);
+                break;
             case 2:
+                view = getBodyFirst(row, column, convertView, parent);
+                break;
             case 3:
                 view = getBody(row, column, convertView, parent);
                 break;
@@ -44,19 +64,64 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         return view;
     }
 
+    private View getHeaderFirst(int row, int column, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            convertView = inflater.inflate(R.layout.item_order_table_header_first, parent, false);
+        }
+        return convertView;
+    }
+
+    private View getHeader(int row, int column, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            convertView = inflater.inflate(R.layout.item_order_table_header, parent, false);
+        }
+        return convertView;
+    }
+
+    private View getBodyFirst(int row, int column, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_order_table_body_first, parent, false);
+        }
+        return convertView;
+    }
+
     private View getBody(int row, int column, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.item_order_table_body, parent, false);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_order_table_body, parent, false);
+        }
+
+        final ImageView ivOrderPriceSwitch = (ImageView) convertView.findViewById(R.id.ivOrderPriceSwitch);
+        TextView tvOrderPrice = (TextView) convertView.findViewById(R.id.tvOrderPrice);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivOrderPriceSwitch.setImageDrawable(ResUtil.getDrawable(R.drawable.selector_find_court_order_has_reserve));
+//                ivOrderPriceSwitch.setBackground(ResUtil.getDrawable(R.drawable.selector_find_court_order_has_reserve));
+            }
+        });
+
         return convertView;
     }
 
     @Override
     public int getWidth(int column) {
-        return 100;
+//        return 150;
+        if (column == -1) {
+            return firstColumnWidth;
+        } else {
+            return columnWidth;
+        }
     }
 
     @Override
     public int getHeight(int row) {
-        return 50;
+//        return 100;
+        if (row == -1) {
+            return firstRowHeight;
+        } else {
+            return rowHeight;
+        }
     }
 
     @Override

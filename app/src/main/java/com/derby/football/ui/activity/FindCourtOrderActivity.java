@@ -2,12 +2,14 @@ package com.derby.football.ui.activity;
 
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
+import com.derby.football.ui.adapter.FindCourtOrderReserveAdapter;
 import com.derby.football.ui.adapter.ScrollTableAdapter;
 import com.derby.football.utils.FullyLinearLayoutManager;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
@@ -26,8 +28,12 @@ public class FindCourtOrderActivity extends BaseActivity {
     @Bind(R.id.tableFixHeaders)
     TableFixHeaders tableFixHeaders;
 
+    @Bind(R.id.recyclerViewReserve)
+    RecyclerView recyclerViewReserve;
+
     private FindCourtOrderDateAdapter adapter;
     private ScrollTableAdapter scrollTableAdapter ;
+    private FindCourtOrderReserveAdapter reserveAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -44,15 +50,20 @@ public class FindCourtOrderActivity extends BaseActivity {
 
         adapter = new FindCourtOrderDateAdapter();
         scrollTableAdapter = new ScrollTableAdapter(this);
+        reserveAdapter = new FindCourtOrderReserveAdapter();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 //        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
 //        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new VerticalDividerItemDecoration.Builder(this).build());
-//        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-//        rlvDate.setVisibility(View.VISIBLE);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,4);
+        recyclerViewReserve.setLayoutManager(gridLayoutManager);
+//        recyclerViewReserve.setHasFixedSize(true);
+        recyclerViewReserve.setAdapter(reserveAdapter);
 
         tableFixHeaders.setAdapter(scrollTableAdapter);
     }

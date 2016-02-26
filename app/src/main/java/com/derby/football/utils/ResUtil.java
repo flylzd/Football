@@ -51,4 +51,14 @@ public class ResUtil {
         return mContext.getResources().getDrawable(resId);
     }
 
+    public static float getDimension(int resId) {
+        checkNotNull();
+        return mContext.getResources().getDimension(resId);
+    }
+
+    public static int getDimensionPixelSize(int resId) {
+        checkNotNull();
+        return mContext.getResources().getDimensionPixelSize(resId);
+    }
+
 }
