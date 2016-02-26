@@ -80,7 +80,8 @@ public class LoginActivity extends BaseActivity {
     void forgotPassword() {
 //        UIHelper.showRegisterActivity(this);
 //        UIHelper.showFindCourtDetailActivity(this);
-        UIHelper.showFindCourtOrderActivity(this);
+//        UIHelper.showFindCourtOrderActivity(this);
+        UIHelper.showCityAreaActivity(this);
     }
 
     private boolean checkLogin() {

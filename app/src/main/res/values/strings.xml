@@ -42,6 +42,9 @@
     <string name="find_court_order_has_reserve">已预订</string>
     <string name="find_court_order_my_reserve">我的预订</string>
 
+    <string name="city_area_title">请选择城市</string>
+
+
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
 

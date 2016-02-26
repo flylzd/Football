@@ -4,6 +4,7 @@ package com.derby.football.utils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.derby.football.ui.activity.CityAreaActivity;
 import com.derby.football.ui.activity.FindCourtDetailActivity;
 import com.derby.football.ui.activity.FindCourtOrderActivity;
 import com.derby.football.ui.activity.MainActivity;
@@ -34,6 +35,15 @@ public class UIHelper {
      */
     public static void showFindCourtOrderActivity(Context context ) {
         Intent intent = new Intent(context, FindCourtOrderActivity.class);
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 选择城市
+     */
+    public static void showCityAreaActivity(Context context ) {
+        Intent intent = new Intent(context, CityAreaActivity.class);
         context.startActivity(intent);
     }
 
