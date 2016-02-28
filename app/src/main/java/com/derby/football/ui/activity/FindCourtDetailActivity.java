@@ -35,7 +35,7 @@ public class FindCourtDetailActivity extends BaseActivity {
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
 
-        adapter = new FindCourtDateAdapter();
+        adapter = new FindCourtDateAdapter(this);
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);

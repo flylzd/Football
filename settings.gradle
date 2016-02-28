@@ -1,1 +1,1 @@
-include ':app', ':tablefixheaders'
+include ':tablefixheaders', ':app'

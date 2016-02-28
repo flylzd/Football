@@ -7,12 +7,18 @@ import android.content.Intent;
 import com.derby.football.ui.activity.CityAreaActivity;
 import com.derby.football.ui.activity.FindCourtDetailActivity;
 import com.derby.football.ui.activity.FindCourtOrderActivity;
+import com.derby.football.ui.activity.LoginActivity;
 import com.derby.football.ui.activity.MainActivity;
 import com.derby.football.ui.activity.RegisterActivity;
 
 public class UIHelper {
 
-    public static void showRegisterActivity(Context context ) {
+    public static void showLoginActivity(Context context ) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void showRegisterActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }

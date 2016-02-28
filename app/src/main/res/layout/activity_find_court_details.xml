@@ -62,16 +62,16 @@
             <TextView
                 style="@style/findCourtSquareText"
                 android:layout_marginTop="8dp"
-                android:drawableLeft="@drawable/ic_login_phone"
-                android:drawableRight="@mipmap/arrow"
+                android:drawableLeft="@mipmap/ic_phone"
+                android:drawableRight="@mipmap/ic_right_arrow"
                 android:text="020-22227889" />
 
             <include layout="@layout/line_horizontal" />
 
             <TextView
                 style="@style/findCourtSquareText"
-                android:drawableLeft="@drawable/ic_login_phone"
-                android:drawableRight="@mipmap/arrow"
+                android:drawableLeft="@mipmap/ic_court_location"
+                android:drawableRight="@mipmap/ic_right_arrow"
                 android:ellipsize="end"
                 android:text="广东省广州市天河区北路" />
 
@@ -89,6 +89,8 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:paddingLeft="20dp"
+                        android:drawableLeft="@mipmap/ic_court_detail_sheshi"
                         style="@style/findCourtDetailsRightText"
                         android:text="@string/find_court_details_site_facilities" />
 
@@ -98,6 +100,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+
                             style="@style/findCourtDetailsRightTextSub"
                             android:text="@string/find_court_details_floor" />
 
@@ -116,7 +119,9 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:drawableLeft="@mipmap/ic_court_detail_fuwu"
                         style="@style/findCourtDetailsRightText"
+                        android:paddingLeft="20dp"
                         android:text="@string/find_court_details_venues_service" />
 
                     <LinearLayout

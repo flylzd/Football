@@ -27,6 +27,8 @@
     <string name="find_tab_team">球队</string>
     <string name="find_tab_court">球场</string>
 
+    <string name="find_court_phone">订场电话：13570163534</string>
+    <string name="find_court_map">查看地图</string>
     <string name="find_court_details_title">场地详情</string>
     <string name="find_court_details_site_facilities">场地设施</string>
     <string name="find_court_details_venues_service">场馆服务</string>

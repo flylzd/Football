@@ -16,6 +16,10 @@
     <dimen name="verification_code_height">32dp</dimen>
     <dimen name="line_hegiht">1dp</dimen>
 
+    <dimen name="find_divider_height">10dp</dimen>
+    <dimen name="find_padding_left">10dp</dimen>
+
+
     <dimen name="find_reserve_layout_width">140dp</dimen>
     <dimen name="find_reserve_layout_height">140dp</dimen>
     <dimen name="find_reserve_btn_height">30dp</dimen>
@@ -41,5 +45,7 @@
 
     <!-- 字体-->
     <dimen name="login_hint_textSize">20sp</dimen>
+
+    <dimen name="find_court_item_textSize">14sp</dimen>
     
 </resources>

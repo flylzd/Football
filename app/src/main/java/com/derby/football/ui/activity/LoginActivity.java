@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity {
 //        UIHelper.showRegisterActivity(this);
 //        UIHelper.showFindCourtDetailActivity(this);
 //        UIHelper.showFindCourtOrderActivity(this);
-        UIHelper.showCityAreaActivity(this);
+//        UIHelper.showCityAreaActivity(this);
     }
 
     private boolean checkLogin() {
