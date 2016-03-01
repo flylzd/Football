@@ -13,7 +13,7 @@ import com.derby.football.ui.activity.RegisterActivity;
 
 public class UIHelper {
 
-    public static void showLoginActivity(Context context ) {
+    public static void showLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
@@ -23,7 +23,7 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
-    public static void showMainActivity(Context context ) {
+    public static void showMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
@@ -31,16 +31,19 @@ public class UIHelper {
     /**
      * 场地详细
      */
-    public static void showFindCourtDetailActivity(Context context ) {
+    public static void showFindCourtDetailActivity(Context context,String mid) {
         Intent intent = new Intent(context, FindCourtDetailActivity.class);
+        intent.putExtra("mid",mid);
         context.startActivity(intent);
     }
 
     /**
      * 场次订购
      */
-    public static void showFindCourtOrderActivity(Context context ) {
+    public static void showFindCourtOrderActivity(Context context,String mid,String date) {
         Intent intent = new Intent(context, FindCourtOrderActivity.class);
+        intent.putExtra("mid",mid);
+        intent.putExtra("date",date);
         context.startActivity(intent);
     }
 
@@ -48,7 +51,7 @@ public class UIHelper {
     /**
      * 选择城市
      */
-    public static void showCityAreaActivity(Context context ) {
+    public static void showCityAreaActivity(Context context) {
         Intent intent = new Intent(context, CityAreaActivity.class);
         context.startActivity(intent);
     }

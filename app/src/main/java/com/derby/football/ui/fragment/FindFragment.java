@@ -8,6 +8,7 @@ import com.derby.football.base.BaseFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import butterknife.Bind;
 
@@ -40,9 +41,10 @@ public class FindFragment extends BaseFragment {
         itemsCreator.add(R.string.find_tab_team, FindTeamFragment.class);
         itemsCreator.add(R.string.find_tab_court, FindCourtFragment.class);
 
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), itemsCreator.create());
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getChildFragmentManager(), itemsCreator.create());
 
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(3);
         viewPagerTab.setViewPager(viewPager);
 
     }

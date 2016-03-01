@@ -46,6 +46,6 @@
     <!-- 字体-->
     <dimen name="login_hint_textSize">20sp</dimen>
 
-    <dimen name="find_court_item_textSize">14sp</dimen>
+    <dimen name="find_court_item_textSize">16sp</dimen>
     
 </resources>

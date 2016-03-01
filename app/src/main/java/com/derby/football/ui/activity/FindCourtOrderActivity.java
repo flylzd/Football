@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.derby.football.R;
+import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
 import com.derby.football.ui.adapter.FindCourtOrderReserveAdapter;
@@ -35,6 +36,9 @@ public class FindCourtOrderActivity extends BaseActivity {
     private ScrollTableAdapter scrollTableAdapter ;
     private FindCourtOrderReserveAdapter reserveAdapter;
 
+    private String mid;
+    private String selectDate;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_find_court_order;
@@ -43,6 +47,16 @@ public class FindCourtOrderActivity extends BaseActivity {
     @Override
     protected int getToolbarTitle() {
         return R.string.find_court_order_title;
+    }
+
+    @Override
+    protected void getBundleExtras(Bundle extras) {
+        if (extras.containsKey("mid")){
+            mid = extras.getString("mid");
+        }
+        if (extras.containsKey("date")){
+            selectDate = extras.getString("date");
+        }
     }
 
     @Override
@@ -66,6 +80,8 @@ public class FindCourtOrderActivity extends BaseActivity {
         recyclerViewReserve.setAdapter(reserveAdapter);
 
         tableFixHeaders.setAdapter(scrollTableAdapter);
+
+        ApiClient.getCourtPlace(this,TAG,mid,selectDate);
     }
 
 }

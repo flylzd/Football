@@ -3,6 +3,8 @@ package com.derby.football.api;
 
 import com.derby.football.bean.AreaBean;
 import com.derby.football.bean.BaseBean;
+import com.derby.football.bean.CourtBean;
+import com.derby.football.bean.CourtInfoBean;
 import com.derby.football.bean.UserBean;
 
 import java.util.Map;
@@ -42,6 +44,14 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("user/index.php")
-    Call<BaseBean> getCourtList(@FieldMap Map<String,String> params);
+    Call<CourtBean> getCourtList(@FieldMap Map<String,String> params);
+
+    @FormUrlEncoded
+    @POST("user/index.php")
+    Call<CourtInfoBean> getCourtInfo(@FieldMap Map<String,String> params);
+
+    @FormUrlEncoded
+    @POST("user/index.php")
+    Call<BaseBean> getCourtPlace(@FieldMap Map<String,String> params);
 
 }

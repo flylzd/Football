@@ -24,7 +24,7 @@ public class AppStartActivity extends AppCompatActivity {
                 UIHelper.showLoginActivity(AppStartActivity.this);
                 AppStartActivity.this.finish();
             }
-        },1500);
+        },500);
 
     }
 

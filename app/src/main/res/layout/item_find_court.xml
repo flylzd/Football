@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvAddress"
-                android:text="￥ 100元起" />
+                android:text="@string/find_court_low_price" />
 
         </RelativeLayout>
 
@@ -97,9 +97,10 @@
             android:clickable="true"
             android:drawableLeft="@mipmap/ic_phone"
             android:gravity="center_vertical"
-            android:paddingBottom="8dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="@dimen/find_padding_left"
-            android:paddingTop="8dp"
+            android:paddingTop="10dp"
+            android:drawablePadding="8dp"
             android:text="@string/find_court_phone"
             android:textColor="@color/black"
             android:textSize="@dimen/find_court_item_textSize" />

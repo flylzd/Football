@@ -6,6 +6,8 @@ import android.content.Context;
 import com.derby.football.R;
 import com.derby.football.bean.AreaBean;
 import com.derby.football.bean.BaseBean;
+import com.derby.football.bean.CourtBean;
+import com.derby.football.bean.CourtInfoBean;
 import com.derby.football.bean.UserBean;
 import com.derby.football.config.AppConfig;
 import com.derby.football.config.EventBusCode;
@@ -26,7 +28,7 @@ import retrofit.Retrofit;
 
 public class ApiClient {
 
-    public volatile static Map<Object, List<Call<?>>> apiCall = new HashMap<Object, List<Call<?>>>();
+    public  static Map<Object, List<Call<?>>> apiCall = new HashMap<Object, List<Call<?>>>();
 
     private static Gson gson = new Gson();
 
@@ -198,13 +200,81 @@ public class ApiClient {
         p.put(ApiService.P_PARAM, gson.toJson(param));
         params.put(ApiService.P, gson.toJson(p));
 
-        Call<BaseBean> call = API.getApiService().getCourtList(params);
+        Call<CourtBean> call = API.getApiService().getCourtList(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<CourtBean>() {
+            @Override
+            void onSuccess(Response<CourtBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getlist, response.body());
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+    }
+
+    /**
+     * 获取球场详情
+     *
+     * @param context
+     * @param tag
+     * @param mid     球场ID
+     */
+    public static void getCourtInfo(final Context context, final Object tag, String mid) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "merchant");
+        p.put(ApiService.P_ACTION, "getinfo");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("mid", mid);
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<CourtInfoBean> call = API.getApiService().getCourtInfo(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<CourtInfoBean>() {
+            @Override
+            void onSuccess(Response<CourtInfoBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getinfo, response.body());
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+    }
+
+    /**
+     * 获取球场场地价格列表
+     *
+     * @param context
+     * @param tag
+     * @param mid     球场ID
+     * @param date    日期（20160202）
+     */
+    public static void getCourtPlace(final Context context, final Object tag, String mid, String date) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "merchant");
+        p.put(ApiService.P_ACTION, "getplace");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("mid", mid);
+        param.put("date", date);
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<BaseBean> call = API.getApiService().getCourtPlace(params);
         addCall(tag, call);
         call.enqueue(new ResponseCallback<BaseBean>() {
             @Override
             void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT);
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getinfo);
                 EventBus.getDefault().post(eventCenter);
             }
         });
@@ -254,8 +324,9 @@ public class ApiClient {
             apiCall.put(tag, callList);
             return;
         }
-
+        System.out.println("ApiClient addCall ");
         for (Object key : apiCall.keySet()) {
+            System.out.println(" key " + key);
             if (tag.equals(key)) {
                 apiCall.get(key).add(call);
             } else {
@@ -270,7 +341,9 @@ public class ApiClient {
         if (tag == null) {
             throw new NullPointerException("the tag is null");
         }
+        System.out.println("ApiClient cancel Call ");
         for (Object key : apiCall.keySet()) {
+            System.out.println("key " + key);
             if (tag.equals(key)) {
                 for (Call<?> call : apiCall.get(key)) {
                     call.cancel();

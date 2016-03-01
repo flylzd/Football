@@ -10,7 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.config.EventBusCode;
+import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.UIHelper;
+
+import de.greenrobot.event.EventBus;
 
 public class FindCourtDateAdapter extends RecyclerView.Adapter<FindCourtDateAdapter.ViewHolder> {
 
@@ -35,7 +39,10 @@ public class FindCourtDateAdapter extends RecyclerView.Adapter<FindCourtDateAdap
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIHelper.showFindCourtOrderActivity(context);
+//                UIHelper.showFindCourtOrderActivity(context);
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_go_order,"20160302");
+                EventBus.getDefault().post(eventCenter);
+
             }
         });
     }
