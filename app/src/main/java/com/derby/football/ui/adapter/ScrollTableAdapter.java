@@ -9,8 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.bean.PlaceBean;
+import com.derby.football.bean.PlaceBean.Header;
+import com.derby.football.bean.PlaceBean.Row;
+import com.derby.football.bean.PlaceBean.RowItem;
+import com.derby.football.config.EventBusCode;
+import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.ResUtil;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import de.greenrobot.event.EventBus;
 
 public class ScrollTableAdapter extends BaseTableAdapter {
 
@@ -22,25 +35,70 @@ public class ScrollTableAdapter extends BaseTableAdapter {
     private int firstRowHeight;
     private int rowHeight;
 
+    //    public Map<String,Map<String,String>>  list = new HashMap<String,Map<String,String>>();  //时间、价格
+//    public Map<String,String> placelist = new HashMap<String,String>();   //场地
+    public List<Map<String, Map<String, String>>> list = new ArrayList<Map<String, Map<String, String>>>();  //时间、价格
+    public List<Map<String, String>> placelist = new ArrayList<Map<String, String>>(); //场地
+
+    public List<Header> headers = new ArrayList<Header>();
+    public List<Row> rows = new ArrayList<Row>();
+
     public ScrollTableAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
 
         firstColumnWidth = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_first_column_width);
-        columnWidth  = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_column_width);
+        columnWidth = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_column_width);
         firstRowHeight = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_first_row_height);
         rowHeight = ResUtil.getDimensionPixelSize(R.dimen.find_court_order_table_row_height);
+    }
 
+    public void refreshAll(PlaceBean.PlaceInfo placeInfo) {
+
+        for (String key : placeInfo.placelist.keySet()) {
+            Header header = new Header();
+            header.id = key;
+            header.name = placeInfo.placelist.get(key);
+            header.isChecked = false;
+            headers.add(header);
+        }
+        Map<String, Map<String, String>> timeList = placeInfo.list;
+        for (String key : timeList.keySet()) {
+            Row row = new Row();
+            row.name = key;
+            Map<String, String> itemMap = timeList.get(key);
+            for (String itemKey : itemMap.keySet()) {
+                RowItem rowItem = new RowItem();
+                rowItem.id = key;
+                rowItem.name = itemMap.get(key);
+                rowItem.time = key;  //时间
+                rowItem.isChecked = false;
+                row.rowItemList.add(rowItem);
+            }
+            rows.add(row);
+        }
+        System.out.println("header'size is " + headers.size());
+        System.out.println("rows'size is " + rows.size());
+        this.notifyDataSetChanged();
+    }
+
+    private void order(int row, int column, boolean isChecked) {
+//        if (isChecked){  //订购
+//        }
+        headers.get(column).isChecked = isChecked;
+        rows.get(row).isChecked = isChecked;
+        rows.get(row).rowItemList.get(column).isChecked = isChecked;
+        this.notifyDataSetChanged();
     }
 
     @Override
     public int getRowCount() {
-        return 14;
+        return rows.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 20;
+        return headers.size();
     }
 
     @Override
@@ -65,16 +123,26 @@ public class ScrollTableAdapter extends BaseTableAdapter {
     }
 
     private View getHeaderFirst(int row, int column, View convertView, ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_order_table_header_first, parent, false);
         }
         return convertView;
     }
 
     private View getHeader(int row, int column, View convertView, ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_order_table_header, parent, false);
         }
+        TextView tvOrderSite = (TextView) convertView.findViewById(R.id.tvOrderSite);
+
+        Header header = headers.get(column);
+        tvOrderSite.setText(header.name);
+        if (header.isChecked) {
+            tvOrderSite.setSelected(true);
+        } else {
+            tvOrderSite.setSelected(false);
+        }
+
         return convertView;
     }
 
@@ -82,10 +150,19 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_order_table_body_first, parent, false);
         }
+        TextView tvOrderTime = (TextView) convertView.findViewById(R.id.tvOrderTime);
+        Row rowTime = rows.get(row);
+        tvOrderTime.setText(rowTime.name + ":00");
+        if (rowTime.isChecked) {
+            tvOrderTime.setSelected(true);
+        } else {
+            tvOrderTime.setSelected(false);
+        }
+
         return convertView;
     }
 
-    private View getBody(int row, int column, View convertView, ViewGroup parent) {
+    private View getBody(final int row, final int column, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_order_table_body, parent, false);
         }
@@ -93,11 +170,29 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         final ImageView ivOrderPriceSwitch = (ImageView) convertView.findViewById(R.id.ivOrderPriceSwitch);
         TextView tvOrderPrice = (TextView) convertView.findViewById(R.id.tvOrderPrice);
 
+        Row rowBean = rows.get(row);
+        final RowItem rowItem = rowBean.rowItemList.get(column);
+        tvOrderPrice.setText(rowItem.name);
+        System.out.println("price " + rowItem.name);
+
+        if (rowItem.isChecked) {
+            ivOrderPriceSwitch.setImageDrawable(ResUtil.getDrawable(R.drawable.selector_find_court_order_my_reserve));
+        } else {
+            ivOrderPriceSwitch.setImageDrawable(ResUtil.getDrawable(R.drawable.selector_find_court_order_can_reserve));
+        }
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivOrderPriceSwitch.setImageDrawable(ResUtil.getDrawable(R.drawable.selector_find_court_order_has_reserve));
-//                ivOrderPriceSwitch.setBackground(ResUtil.getDrawable(R.drawable.selector_find_court_order_has_reserve));
+                rowItem.isChecked = !rowItem.isChecked;
+                if (rowItem.isChecked){
+                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_add,rowItem);
+                    EventBus.getDefault().post(eventCenter);
+                } else {
+                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_del,rowItem);
+                    EventBus.getDefault().post(eventCenter);
+                }
+                order(row, column, rowItem.isChecked);
             }
         });
 

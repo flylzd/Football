@@ -14,4 +14,8 @@ public interface EventBusCode {
     int SUCCESS_FIND_COURT_getlist = 3001;
     int SUCCESS_FIND_COURT_getinfo = 3002;
     int SUCCESS_FIND_COURT_go_order = 3003;
+    int SUCCESS_FIND_COURT_getplace = 3004;
+    int SUCCESS_FIND_COURT_order_add = 3005;
+    int SUCCESS_FIND_COURT_order_del = 3006;
+
 }

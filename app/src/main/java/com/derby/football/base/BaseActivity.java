@@ -64,6 +64,12 @@ public class BaseActivity extends AppCompatActivity {
         if (isBindEventBus()) {
             EventBus.getDefault().unregister(this);
         }
+//        ApiClient.cancel(TAG);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         ApiClient.cancel(TAG);
     }
 

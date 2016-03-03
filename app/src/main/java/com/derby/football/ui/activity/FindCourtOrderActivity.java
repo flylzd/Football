@@ -9,10 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import com.derby.football.R;
 import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
+import com.derby.football.bean.CourtInfoBean;
+import com.derby.football.bean.PlaceBean;
+import com.derby.football.config.EventBusCode;
+import com.derby.football.eventbus.EventCenter;
 import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
 import com.derby.football.ui.adapter.FindCourtOrderReserveAdapter;
 import com.derby.football.ui.adapter.ScrollTableAdapter;
 import com.derby.football.utils.FullyLinearLayoutManager;
+import com.derby.football.utils.UIHelper;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
@@ -64,7 +69,7 @@ public class FindCourtOrderActivity extends BaseActivity {
 
         adapter = new FindCourtOrderDateAdapter();
         scrollTableAdapter = new ScrollTableAdapter(this);
-        reserveAdapter = new FindCourtOrderReserveAdapter();
+        reserveAdapter = new FindCourtOrderReserveAdapter(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 //        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
@@ -82,6 +87,22 @@ public class FindCourtOrderActivity extends BaseActivity {
         tableFixHeaders.setAdapter(scrollTableAdapter);
 
         ApiClient.getCourtPlace(this,TAG,mid,selectDate);
+    }
+
+    @Override
+    protected void onEventBusHandler(EventCenter eventCenter) {
+
+        switch (eventCenter.getEventCode()) {
+            case EventBusCode.SUCCESS_FIND_COURT_getplace:
+                scrollTableAdapter.refreshAll(((PlaceBean)eventCenter.getData()).data);
+                break;
+            case EventBusCode.SUCCESS_FIND_COURT_order_add:
+                reserveAdapter.add((PlaceBean.RowItem)eventCenter.getData());
+                break;
+            case EventBusCode.SUCCESS_FIND_COURT_order_del:
+                reserveAdapter.remove((PlaceBean.RowItem)eventCenter.getData());
+                break;
+        }
     }
 
 }

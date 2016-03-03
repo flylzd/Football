@@ -8,6 +8,7 @@ import com.derby.football.bean.AreaBean;
 import com.derby.football.bean.BaseBean;
 import com.derby.football.bean.CourtBean;
 import com.derby.football.bean.CourtInfoBean;
+import com.derby.football.bean.PlaceBean;
 import com.derby.football.bean.UserBean;
 import com.derby.football.config.AppConfig;
 import com.derby.football.config.EventBusCode;
@@ -268,13 +269,13 @@ public class ApiClient {
         p.put(ApiService.P_PARAM, gson.toJson(param));
         params.put(ApiService.P, gson.toJson(p));
 
-        Call<BaseBean> call = API.getApiService().getCourtPlace(params);
+        Call<PlaceBean> call = API.getApiService().getCourtPlace(params);
         addCall(tag, call);
-        call.enqueue(new ResponseCallback<BaseBean>() {
+        call.enqueue(new ResponseCallback<PlaceBean>() {
             @Override
-            void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
+            void onSuccess(Response<PlaceBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getinfo);
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getplace,response.body());
                 EventBus.getDefault().post(eventCenter);
             }
         });

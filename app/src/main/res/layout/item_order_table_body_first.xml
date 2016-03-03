@@ -10,6 +10,7 @@
         android:gravity="top|right"
         android:layout_width="match_parent"
         android:textSize="12sp"
+        android:textColor="@drawable/color_text_table"
         android:text="12:00"
         android:layout_height="wrap_content" />
 
