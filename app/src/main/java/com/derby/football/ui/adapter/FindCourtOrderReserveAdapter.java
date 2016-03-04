@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.derby.football.R;
 import com.derby.football.bean.PlaceBean;
 import com.derby.football.bean.PlaceBean.RowItem;
+import com.derby.football.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,6 @@ public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourt
         this.context = context;
     }
 
-    //    public void refresh(List<RowItem> rowItems) {
-//        this.rowItems =
-//    }
     public void add(RowItem rowItem) {
         this.rowItems.add(rowItem);
         this.notifyDataSetChanged();
@@ -46,7 +44,6 @@ public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourt
                 break;
             }
         }
-//        this.rowItems.remove(rowItem);
         this.notifyDataSetChanged();
     }
 
@@ -58,7 +55,11 @@ public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourt
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
+        RowItem rowItem = rowItems.get(position);
+        int timeTmp = Integer.valueOf(rowItem.time);
+        String time = TimeUtil.getTimePeriods(rowItem.time);
+        holder.tvTime.setText(time);
+        holder.tvPlace.setText(rowItem.placeName);
     }
 
     @Override
@@ -67,11 +68,14 @@ public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourt
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
+        @Bind(R.id.tvTime)
+        TextView tvTime;
+        @Bind(R.id.tvPlace)
+        TextView tvPlace;
 
         public ViewHolder(View itemView) {
             super(itemView);
-//            ButterKnife.bind(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

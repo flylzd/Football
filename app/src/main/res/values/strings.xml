@@ -44,6 +44,7 @@
     <string name="find_court_order_can_reserve">可预订</string>
     <string name="find_court_order_has_reserve">已预订</string>
     <string name="find_court_order_my_reserve">我的预订</string>
+    <string name="find_court_order_too_much">你选择的场次数太多啦，请分两次下单结算哦。</string>
 
     <string name="city_area_title">请选择城市</string>
 

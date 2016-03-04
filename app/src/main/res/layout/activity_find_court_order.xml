@@ -29,12 +29,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <include layout="@layout/line_horizontal" />
+
         <LinearLayout
+            android:id="@+id/layoutReserveList"
             android:layout_width="match_parent"
             android:layout_height="@dimen/find_court_order_bottom_height"
             android:layout_marginLeft="10dp"
             android:paddingTop="@dimen/find_court_order_bottom_my_reserve_margin_top"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
@@ -46,10 +50,10 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/layoutReserveStatus"
             android:layout_width="match_parent"
             android:layout_height="@dimen/find_court_order_bottom_height"
-            android:gravity="center_vertical"
-            android:visibility="gone">
+            android:gravity="center_vertical">
 
             <RelativeLayout
                 android:id="@+id/layoutHasReserve"
@@ -126,10 +130,10 @@
                     android:layout_marginTop="@dimen/find_court_order_bottom_img_tv_margin_top"
                     android:text="@string/find_court_order_my_reserve" />
             </RelativeLayout>
-
         </RelativeLayout>
 
         <Button
+            android:id="@+id/btnOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

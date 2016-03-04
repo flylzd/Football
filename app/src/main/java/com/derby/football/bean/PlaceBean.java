@@ -35,6 +35,7 @@ public class PlaceBean extends BaseBean {
         public String id;
         public String time;
         public String name;
+        public String placeName;
         public boolean isChecked;
 
         @Override
@@ -43,6 +44,7 @@ public class PlaceBean extends BaseBean {
                     "id='" + id + '\'' +
                     ", time='" + time + '\'' +
                     ", name='" + name + '\'' +
+                    ", placeName='" + placeName + '\'' +
                     ", isChecked=" + isChecked +
                     '}';
         }

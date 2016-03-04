@@ -16,6 +16,7 @@ import com.derby.football.bean.PlaceBean.RowItem;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
 import com.derby.football.utils.ResUtil;
+import com.derby.football.utils.ToastUtil;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class ScrollTableAdapter extends BaseTableAdapter {
     public List<Header> headers = new ArrayList<Header>();
     public List<Row> rows = new ArrayList<Row>();
 
+    public List<RowItem> selectRowItems = new ArrayList<RowItem>();
+
     public ScrollTableAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
@@ -69,9 +72,10 @@ public class ScrollTableAdapter extends BaseTableAdapter {
             Map<String, String> itemMap = timeList.get(key);
             for (String itemKey : itemMap.keySet()) {
                 RowItem rowItem = new RowItem();
-                rowItem.id = key;
-                rowItem.name = itemMap.get(key);
+                rowItem.id = itemKey;
+                rowItem.name = itemMap.get(itemKey);
                 rowItem.time = key;  //时间
+                rowItem.placeName = placeInfo.placelist.get(itemKey);
                 rowItem.isChecked = false;
                 row.rowItemList.add(rowItem);
             }
@@ -184,13 +188,24 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!selectRowItems.contains(rowItem)){
+                    if (selectRowItems.size() == 4) {
+                        ToastUtil.showShort(R.string.find_court_order_too_much);
+                        return;
+                    }
+                }
                 rowItem.isChecked = !rowItem.isChecked;
                 if (rowItem.isChecked){
                     EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_add,rowItem);
                     EventBus.getDefault().post(eventCenter);
+                    selectRowItems.add(rowItem);
+                    System.out.println("add list'size is " + selectRowItems.size());
                 } else {
                     EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_del,rowItem);
                     EventBus.getDefault().post(eventCenter);
+                    selectRowItems.remove(rowItem);
+                    System.out.println("remove list'size is " + selectRowItems.size());
                 }
                 order(row, column, rowItem.isChecked);
             }
