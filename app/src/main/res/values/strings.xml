@@ -46,9 +46,16 @@
     <string name="find_court_order_my_reserve">我的预订</string>
     <string name="find_court_order_too_much">你选择的场次数太多啦，请分两次下单结算哦。</string>
 
+    <string name="mine_title">个人资料</string>
+    <string name="mine_name">姓名</string>
+    <string name="mine_nickname">昵称</string>
+    <string name="mine_date_of_birth">出生年月</string>
+    <string name="mine_age">年龄</string>
+    <string name="mine_sex">性别</string>
+    <string name="mine_register_area">注册地区</string>
+
     <string name="city_area_title">请选择城市</string>
-
-
+    
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
 
