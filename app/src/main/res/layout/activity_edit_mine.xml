@@ -25,9 +25,9 @@
                     style="@style/mineTextLeftStyle"
                     android:text="@string/mine_name" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tvName"
-                    style="@style/mineTextRightStyle" />
+                    style="@style/mineEditTextRightStyle" />
             </LinearLayout>
 
             <include layout="@layout/line_horizontal" />
@@ -40,9 +40,9 @@
                     style="@style/mineTextLeftStyle"
                     android:text="@string/mine_nickname" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tvNickName"
-                    style="@style/mineTextRightStyle" />
+                    style="@style/mineEditTextRightStyle" />
             </LinearLayout>
 
         </LinearLayout>
