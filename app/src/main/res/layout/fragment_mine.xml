@@ -2,7 +2,63 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <include layout="@layout/include_mime_title" />
+
+    <LinearLayout
+        android:id="@+id/layoutMine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@drawable/selector_layout_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="18dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="Baby杀手"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="有战必应"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_right_arrow" />
+
+    </LinearLayout>
+
+    <include layout="@layout/line_horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,116 +66,122 @@
         android:background="@color/white"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+        <LinearLayout style="@style/homeMineTopLayout">
 
-            <LinearLayout
-                android:id="@+id/layoutName"
-                style="@style/mineLayoutStyle">
+            <TextView
+                style="@style/homeMineTopLayout.Text"
+                android:text="0" />
 
-                <TextView
-                    style="@style/mineTextLeftStyle"
-                    android:text="@string/mine_name" />
-
-                <TextView
-                    android:id="@+id/tvName"
-                    style="@style/mineTextRightStyle" />
-            </LinearLayout>
-
-            <include layout="@layout/line_horizontal" />
-
-            <LinearLayout
-                android:id="@+id/layoutNickName"
-                style="@style/mineLayoutStyle">
-
-                <TextView
-                    style="@style/mineTextLeftStyle"
-                    android:text="@string/mine_nickname" />
-
-                <TextView
-                    android:id="@+id/tvNickName"
-                    style="@style/mineTextRightStyle" />
-            </LinearLayout>
+            <TextView
+                style="@style/homeMineTopLayout.TextBottom"
+                android:text="进球" />
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="16dp"
-            android:src="@mipmap/ic_launcher" />
+        <include layout="@layout/line_vertical" />
+
+        <LinearLayout style="@style/homeMineTopLayout">
+
+            <TextView
+                style="@style/homeMineTopLayout.Text"
+                android:text="0" />
+
+            <TextView
+                style="@style/homeMineTopLayout.TextBottom"
+                android:text="胜利" />
+
+        </LinearLayout>
+
+        <include layout="@layout/line_vertical" />
+
+        <LinearLayout style="@style/homeMineTopLayout">
+
+            <TextView
+                style="@style/homeMineTopLayout.Text"
+                android:text="0" />
+
+            <TextView
+                style="@style/homeMineTopLayout.TextBottom"
+                android:text="平局" />
+
+        </LinearLayout>
+
+        <include layout="@layout/line_vertical" />
+
+        <LinearLayout style="@style/homeMineTopLayout">
+
+            <TextView
+                style="@style/homeMineTopLayout.Text"
+                android:text="0" />
+
+            <TextView
+                style="@style/homeMineTopLayout.TextBottom"
+                android:text="积分" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_match"
+            android:text="@string/mine_match" />
+
+        <include layout="@layout/line_horizontal" />
+
+        <TextView
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_my_match"
+            android:text="@string/mine_my_match" />
+
+        <include layout="@layout/line_horizontal" />
+
+        <TextView
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_my_war"
+            android:text="@string/mine_my_war" />
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/layoutDateOfBirth"
-            style="@style/mineLayoutStyle">
-
-            <TextView
-                style="@style/mineTextLeftStyle"
-                android:text="@string/mine_date_of_birth" />
-
-            <TextView
-                android:id="@+id/tvDateOfBirth"
-                style="@style/mineTextRightStyle" />
-        </LinearLayout>
-
-        <include layout="@layout/line_horizontal" />
-
-        <LinearLayout
-            android:id="@+id/layoutAge"
-            style="@style/mineLayoutStyle">
-
-            <TextView
-                style="@style/mineTextLeftStyle"
-                android:text="@string/mine_age" />
-
-            <TextView
-                android:id="@+id/tvAge"
-                style="@style/mineTextRightStyle" />
-        </LinearLayout>
-
-        <include layout="@layout/line_horizontal" />
-
-        <LinearLayout
-            android:id="@+id/layoutSex"
-            style="@style/mineLayoutStyle">
-
-            <TextView
-                style="@style/mineTextLeftStyle"
-                android:text="@string/mine_sex" />
-
-            <TextView
-                android:id="@+id/tvSex"
-                style="@style/mineTextRightStyle" />
-        </LinearLayout>
-
-        <include layout="@layout/line_horizontal" />
-
+        <TextView
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_identity"
+            android:text="@string/mine_identity" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutArea"
-        style="@style/mineLayoutStyle"
-        android:layout_marginTop="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
         <TextView
-            style="@style/mineTextLeftStyle"
-            android:text="@string/mine_register_area" />
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_ball_friend"
+            android:text="@string/mine_ball_friend" />
+
+        <include layout="@layout/line_horizontal" />
 
         <TextView
-            android:id="@+id/tvArea"
-            style="@style/mineTextRightStyle" />
+            style="@style/homeMineTextLeftStyle"
+            android:drawableLeft="@mipmap/ic_contact_service"
+            android:text="@string/mine_contact_service" />
+
     </LinearLayout>
 
 </LinearLayout>
+

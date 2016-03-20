@@ -6,22 +6,19 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.derby.football.R;
-import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
-import com.derby.football.bean.CourtBean;
 import com.derby.football.bean.CourtData;
 import com.derby.football.bean.CourtInfoBean;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
-import com.derby.football.ui.adapter.FindCourtDateAdapter;
+import com.derby.football.ui.adapter.CourtDetailDateAdapter;
 import com.derby.football.utils.FullyLinearLayoutManager;
 import com.derby.football.utils.UIHelper;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 
-public class FindCourtDetailActivity extends BaseActivity {
+public class CourtDetailActivity extends BaseActivity {
 
     @Bind(R.id.rlvDate)
     RecyclerView rlvDate;
@@ -46,14 +43,13 @@ public class FindCourtDetailActivity extends BaseActivity {
     @Bind(R.id.tvTingche)
     TextView tvTingche;
 
-
-    private FindCourtDateAdapter adapter;
+    private CourtDetailDateAdapter adapter;
 
     private String mid;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_find_court_details;
+        return R.layout.activity_court_details;
     }
 
     @Override
@@ -71,7 +67,7 @@ public class FindCourtDetailActivity extends BaseActivity {
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
 
-        adapter = new FindCourtDateAdapter(this);
+        adapter = new CourtDetailDateAdapter(this);
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
@@ -80,7 +76,8 @@ public class FindCourtDetailActivity extends BaseActivity {
         rlvDate.setAdapter(adapter);
 //        rlvDate.setVisibility(View.VISIBLE);
 
-        ApiClient.getCourtInfo(this, TAG, mid);
+//        ApiClient.getCourtInfo(this, TAG, mid);
+
     }
 
     private void showDetails(CourtData data) {
@@ -101,13 +98,13 @@ public class FindCourtDetailActivity extends BaseActivity {
     protected void onEventBusHandler(EventCenter eventCenter) {
 
         switch (eventCenter.getEventCode()) {
-            case EventBusCode.SUCCESS_FIND_COURT_getinfo:
+            case EventBusCode.SUCCESS_COURT_getinfo:
                 showDetails(((CourtInfoBean)eventCenter.getData()).data);
                 break;
-            case EventBusCode.SUCCESS_FIND_COURT_go_order:
+            case EventBusCode.SUCCESS_COURT_go_choose:
                 String date = (String) eventCenter.getData();
-                UIHelper.showFindCourtOrderActivity(FindCourtDetailActivity.this,mid,date);
-                finish();
+                UIHelper.showCourtChooseActivity(CourtDetailActivity.this, mid, date);
+//                finish();
                 break;
         }
     }

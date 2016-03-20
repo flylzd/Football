@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.ui.fragment.FindFragment;
+import com.derby.football.ui.fragment.HomeFragment;
+import com.derby.football.ui.fragment.MessageFragment;
 import com.derby.football.ui.fragment.MineFragment;
 import com.derby.football.ui.fragment.TeamFragment;
 import com.derby.football.utils.ToastUtil;
@@ -44,7 +46,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getToolbarTitle() {
-        return R.string.main_tab_team;
+        return R.string.main_tab_home;
     }
 
     @Override
@@ -60,12 +62,12 @@ public class MainActivity extends BaseActivity {
         fragmentAdapter = new FragmentStateArrayPagerAdapter(getSupportFragmentManager());
         fragmentContainer.setAdapter(fragmentAdapter);
 
-        TeamFragment teamFragment = TeamFragment.newInstance();
-        FindFragment findFragment = FindFragment.newInstance();
+        HomeFragment homeFragment = HomeFragment.newInstance();
+        MessageFragment messageFragment = MessageFragment.newInstance();
         MineFragment mineFragment = MineFragment.newInstance();
 
-        fragmentAdapter.add(teamFragment);
-        fragmentAdapter.add(findFragment);
+        fragmentAdapter.add(homeFragment);
+        fragmentAdapter.add(messageFragment);
         fragmentAdapter.add(mineFragment);
     }
 

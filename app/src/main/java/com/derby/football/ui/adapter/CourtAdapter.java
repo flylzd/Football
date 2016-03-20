@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.derby.football.R;
-import com.derby.football.bean.CourtBean;
 import com.derby.football.bean.CourtData;
 import com.derby.football.utils.ResUtil;
 import com.derby.football.utils.UIHelper;
@@ -21,12 +20,12 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FindCourtAdapter extends RecyclerView.Adapter<FindCourtAdapter.ViewHolder> {
+public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.ViewHolder> {
 
     private Context context;
     private List<CourtData> dataList = new ArrayList<CourtData>();
 
-    public FindCourtAdapter(Context context) {
+    public CourtAdapter(Context context) {
         this.context = context;
     }
 
@@ -48,7 +47,7 @@ public class FindCourtAdapter extends RecyclerView.Adapter<FindCourtAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_find_court, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_court, parent, false);
         return new ViewHolder(view);
     }
 

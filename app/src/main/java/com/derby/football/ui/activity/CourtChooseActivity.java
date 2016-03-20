@@ -5,35 +5,34 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.derby.football.R;
 import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
-import com.derby.football.bean.CourtInfoBean;
 import com.derby.football.bean.PlaceBean;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
-import com.derby.football.ui.adapter.FindCourtOrderDateAdapter;
+import com.derby.football.ui.adapter.CourtChooseDateAdapter;
 import com.derby.football.ui.adapter.FindCourtOrderReserveAdapter;
 import com.derby.football.ui.adapter.ScrollTableAdapter;
-import com.derby.football.utils.FullyLinearLayoutManager;
 import com.derby.football.utils.ToastUtil;
-import com.derby.football.utils.UIHelper;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
-import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
 
 import butterknife.Bind;
 
-public class FindCourtOrderActivity extends BaseActivity {
+public class CourtChooseActivity extends BaseActivity {
 
 
     @Bind(R.id.recyclerView)
-//    SuperRecyclerView recyclerView;
     RecyclerView recyclerView;
+    //    SuperRecyclerView recyclerView;
 
     @Bind(R.id.tableFixHeaders)
     TableFixHeaders tableFixHeaders;
@@ -48,9 +47,9 @@ public class FindCourtOrderActivity extends BaseActivity {
     LinearLayout layoutReserveList;
 
     @Bind(R.id.btnOrder)
-    LinearLayout btnOrder;
+    Button btnOrder;
 
-    private FindCourtOrderDateAdapter adapter;
+    private CourtChooseDateAdapter dateAdapter;
     private ScrollTableAdapter scrollTableAdapter;
     private FindCourtOrderReserveAdapter reserveAdapter;
 
@@ -59,7 +58,7 @@ public class FindCourtOrderActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_find_court_order;
+        return R.layout.activity_court_choose;
     }
 
     @Override
@@ -80,7 +79,7 @@ public class FindCourtOrderActivity extends BaseActivity {
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
 
-        adapter = new FindCourtOrderDateAdapter();
+        dateAdapter = new CourtChooseDateAdapter();
         scrollTableAdapter = new ScrollTableAdapter(this);
         reserveAdapter = new FindCourtOrderReserveAdapter(this);
 
@@ -90,7 +89,7 @@ public class FindCourtOrderActivity extends BaseActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new VerticalDividerItemDecoration.Builder(this).build());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(dateAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         recyclerViewReserve.setLayoutManager(gridLayoutManager);
@@ -103,27 +102,56 @@ public class FindCourtOrderActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+       super.onResume();
+        System.out.println("onResume");
+    }
+
+    @Override
     protected void onEventBusHandler(EventCenter eventCenter) {
 
         switch (eventCenter.getEventCode()) {
-            case EventBusCode.SUCCESS_FIND_COURT_getplace:
+            case EventBusCode.SUCCESS_COURT_getplace:
                 scrollTableAdapter.refreshAll(((PlaceBean) eventCenter.getData()).data);
                 break;
-            case EventBusCode.SUCCESS_FIND_COURT_order_add:
+            case EventBusCode.SUCCESS_COURT_place_add:
                 if (reserveAdapter.getItemCount() <= 4) {
                     reserveAdapter.add((PlaceBean.RowItem) eventCenter.getData());
                     layoutReserveStatus.setVisibility(View.GONE);
                     layoutReserveList.setVisibility(View.VISIBLE);
                 }
                 break;
-            case EventBusCode.SUCCESS_FIND_COURT_order_del:
+            case EventBusCode.SUCCESS_COURT_place_del:
                 reserveAdapter.remove((PlaceBean.RowItem) eventCenter.getData());
                 if (reserveAdapter.getItemCount() == 0) {
                     layoutReserveStatus.setVisibility(View.VISIBLE);
                     layoutReserveList.setVisibility(View.GONE);
                 }
                 break;
+            case EventBusCode.SUCCESS_COURT_choose_date_change:
+                selectDate = (String) eventCenter.getData();
+                ApiClient.getCourtPlace(this, TAG, mid, selectDate);
+                break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_court_choose, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        switch(item.getItemId()){
+            case R.id.action_order:
+                ToastUtil.showShort("action_order");
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

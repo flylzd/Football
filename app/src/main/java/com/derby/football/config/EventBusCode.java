@@ -10,12 +10,14 @@ public interface EventBusCode {
 
     int SUCCESS_REGISTER = 2000;
 
-    int SUCCESS_FIND_COURT = 3000;
-    int SUCCESS_FIND_COURT_getlist = 3001;
-    int SUCCESS_FIND_COURT_getinfo = 3002;
-    int SUCCESS_FIND_COURT_go_order = 3003;
-    int SUCCESS_FIND_COURT_getplace = 3004;
-    int SUCCESS_FIND_COURT_order_add = 3005;
-    int SUCCESS_FIND_COURT_order_del = 3006;
+    int SUCCESS_COURT = 3000;
+    int SUCCESS_COURT_getlist = 3001;
+    int SUCCESS_COURT_getinfo = 3010;
+    int SUCCESS_COURT_go_choose = 3011;
+    int SUCCESS_COURT_choose_date_change = 3020;
+    int SUCCESS_COURT_getplace = 3021;
+    int SUCCESS_COURT_place_add = 3022;
+    int SUCCESS_COURT_place_del = 3023;
+    int SUCCESS_COURT_place_send = 3024;
 
 }

@@ -16,6 +16,7 @@
     android:paddingTop="6dp">
 
     <TextView
+        android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -23,6 +24,7 @@
         android:textSize="17sp" />
 
     <TextView
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="2dp"
@@ -30,6 +32,7 @@
         android:text="2月9号" />
 
     <Button
+        android:id="@+id/btnBook"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/find_reserve_btn_height"
         android:background="@drawable/selector_find_reserve_btn"

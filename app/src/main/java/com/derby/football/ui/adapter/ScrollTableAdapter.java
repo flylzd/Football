@@ -58,6 +58,10 @@ public class ScrollTableAdapter extends BaseTableAdapter {
 
     public void refreshAll(PlaceBean.PlaceInfo placeInfo) {
 
+        headers.clear();
+        rows.clear();
+//        selectRowItems.clear();
+
         for (String key : placeInfo.placelist.keySet()) {
             Header header = new Header();
             header.id = key;
@@ -81,8 +85,8 @@ public class ScrollTableAdapter extends BaseTableAdapter {
             }
             rows.add(row);
         }
-        System.out.println("header'size is " + headers.size());
-        System.out.println("rows'size is " + rows.size());
+//        System.out.println("header'size is " + headers.size());
+//        System.out.println("rows'size is " + rows.size());
         this.notifyDataSetChanged();
     }
 
@@ -177,7 +181,7 @@ public class ScrollTableAdapter extends BaseTableAdapter {
         Row rowBean = rows.get(row);
         final RowItem rowItem = rowBean.rowItemList.get(column);
         tvOrderPrice.setText(rowItem.name);
-        System.out.println("price " + rowItem.name);
+//        System.out.println("price " + rowItem.name);
 
         if (rowItem.isChecked) {
             ivOrderPriceSwitch.setImageDrawable(ResUtil.getDrawable(R.drawable.selector_find_court_order_my_reserve));
@@ -197,15 +201,15 @@ public class ScrollTableAdapter extends BaseTableAdapter {
                 }
                 rowItem.isChecked = !rowItem.isChecked;
                 if (rowItem.isChecked){
-                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_add,rowItem);
+                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_place_add,rowItem);
                     EventBus.getDefault().post(eventCenter);
                     selectRowItems.add(rowItem);
-                    System.out.println("add list'size is " + selectRowItems.size());
+//                    System.out.println("add list'size is " + selectRowItems.size());
                 } else {
-                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_order_del,rowItem);
+                    EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_place_del,rowItem);
                     EventBus.getDefault().post(eventCenter);
                     selectRowItems.remove(rowItem);
-                    System.out.println("remove list'size is " + selectRowItems.size());
+//                    System.out.println("remove list'size is " + selectRowItems.size());
                 }
                 order(row, column, rowItem.isChecked);
             }

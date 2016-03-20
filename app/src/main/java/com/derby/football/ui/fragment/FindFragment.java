@@ -39,7 +39,7 @@ public class FindFragment extends BaseFragment {
         FragmentPagerItems.Creator itemsCreator = FragmentPagerItems.with(getActivity());
         itemsCreator.add(R.string.find_tab_match, FindMatchFragment.class);
         itemsCreator.add(R.string.find_tab_team, FindTeamFragment.class);
-        itemsCreator.add(R.string.find_tab_court, FindCourtFragment.class);
+//        itemsCreator.add(R.string.find_tab_court, FindCourtFragment.class);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getChildFragmentManager(), itemsCreator.create());
 

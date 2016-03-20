@@ -23,9 +23,17 @@
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.RegisterActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.activity.MainActivity" android:launchMode="singleTask" />
-        <activity android:name=".ui.activity.FindCourtDetailActivity" />
-        <activity android:name=".ui.activity.FindCourtOrderActivity" />
+        <activity android:name=".ui.activity.CourtActivity" />
+        <activity android:name=".ui.activity.CourtDetailActivity" />
+        <activity android:name=".ui.activity.CourtChooseActivity" />
         <activity android:name=".ui.activity.CityAreaActivity" />
+        <activity android:name=".ui.activity.TeamActivity" />
+        <activity android:name=".ui.activity.TeamDetailActivity" />
+        <activity android:name=".ui.activity.TrainingActivity" />
+        <activity android:name=".ui.activity.TrainingDetailsActivity" />
+        <activity android:name=".ui.activity.MatchActivity" />
+        <activity android:name=".ui.activity.MatchDetailsActivity" />
+        <activity android:name=".ui.activity.MineInfoActivity" />
 
     </application>
 

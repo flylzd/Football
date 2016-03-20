@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/find_divider_height"
+    android:paddingBottom="@dimen/find_divider_height"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:src="@mipmap/app_icon"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="进行中"
+            android:background="@android:color/holo_red_light"
+            android:textSize="16sp"
+            android:layout_gravity="top"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="广东省青少年羽毛球选手集训"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="2016年04月03日-2016年05月20日"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="广东省佛山市禅城区"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_gravity="center_vertical|right"
+        android:layout_width="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/ic_right_arrow"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

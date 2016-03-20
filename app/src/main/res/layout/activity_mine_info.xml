@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutName"
+                style="@style/mineLayoutStyle">
+
+                <TextView
+                    style="@style/mineTextLeftStyle"
+                    android:text="@string/mine_name" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/mineTextRightStyle" />
+            </LinearLayout>
+
+            <include layout="@layout/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/layoutNickName"
+                style="@style/mineLayoutStyle">
+
+                <TextView
+                    style="@style/mineTextLeftStyle"
+                    android:text="@string/mine_nickname" />
+
+                <TextView
+                    android:id="@+id/tvNickName"
+                    style="@style/mineTextRightStyle" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutDateOfBirth"
+            style="@style/mineLayoutStyle">
+
+            <TextView
+                style="@style/mineTextLeftStyle"
+                android:text="@string/mine_date_of_birth" />
+
+            <TextView
+                android:id="@+id/tvDateOfBirth"
+                style="@style/mineTextRightStyle" />
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/layoutAge"
+            style="@style/mineLayoutStyle">
+
+            <TextView
+                style="@style/mineTextLeftStyle"
+                android:text="@string/mine_age" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                style="@style/mineTextRightStyle" />
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/layoutSex"
+            style="@style/mineLayoutStyle">
+
+            <TextView
+                style="@style/mineTextLeftStyle"
+                android:text="@string/mine_sex" />
+
+            <TextView
+                android:id="@+id/tvSex"
+                style="@style/mineTextRightStyle" />
+        </LinearLayout>
+
+        <include layout="@layout/line_horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutArea"
+        style="@style/mineLayoutStyle"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            style="@style/mineTextLeftStyle"
+            android:text="@string/mine_register_area" />
+
+        <TextView
+            android:id="@+id/tvArea"
+            style="@style/mineTextRightStyle" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,9 +2,21 @@
     <string name="app_name">Football</string>
 
 
-    <string name="main_tab_team">球队</string>
-    <string name="main_tab_find">发现</string>
+    <string name="main_tab_home">主页</string>
+    <string name="main_tab_message">消息</string>
     <string name="main_tab_mine">我的</string>
+
+    <!--<string name="main_tab_team">球队</string>-->
+    <!--<string name="main_tab_find">发现</string>-->
+    <!--<string name="main_tab_mine">我的</string>-->
+
+    <string-array name="item_home_names">
+        <item>订场</item>
+        <item>约战</item>
+        <item>球队</item>
+        <item>集训</item>
+        <item>赛事召集</item>
+    </string-array>
 
     <string name="login_title">登陆</string>
     <string name="login_username_hint">请输入手机号码</string>
@@ -27,6 +39,7 @@
     <string name="find_tab_team">球队</string>
     <string name="find_tab_court">球场</string>
 
+    <string name="court_title">球场列表</string>
     <string name="find_court_low_price">￥ %s 元起</string>
     <string name="find_court_phone">订场电话：%s</string>
     <string name="find_court_map">查看地图</string>
@@ -46,6 +59,42 @@
     <string name="find_court_order_my_reserve">我的预订</string>
     <string name="find_court_order_too_much">你选择的场次数太多啦，请分两次下单结算哦。</string>
 
+    <string name="team_title">球队列表</string>
+    <string name="team_detail_title">球队详情</string>
+
+    <string name="training_title">集训</string>
+    <string name="training_details_title">集训详情</string>
+    <string name="training_details_name">名称：广东省少年羽毛球选手培训</string>
+    <string name="training_details_type">运动类型：羽毛球</string>
+    <string name="training_details_num_people">人数：10</string>
+    <string name="training_details_start_time">开始时间：2016年3月20日</string>
+    <string name="training_details_end_time">结束时间：2016年6月20日</string>
+    <string name="training_details_deadline_time">报名截止时间：2016年4月20日</string>
+    <string name="training_details_coach">领队教练：李晓明</string>
+    <string name="training_details_charge">收&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;费：100元</string>
+    <string name="training_details_linkman">联&#160;&#160;系&#160;&#160;人：李开心</string>
+    <string name="training_details_phone">联系方式：13783333</string>
+    <string name="training_details_course_profile">课程简介：</string>
+    <string name="training_details_company_profile">企业简介：</string>
+
+    <string name="match_title">赛事</string>
+    <string name="match_details_title">赛事详情</string>
+    <string name="match_details_name_title">赛事全称</string>
+    <string name="match_details_sort_name_title">简称</string>
+    <string name="match_details_area_title">所属地区</string>
+    <string name="match_details_host_title">主办方</string>
+    <string name="match_details_host_site_title">主办场地</string>
+    <string name="match_details_time_title">时间跨度</string>
+    <string name="match_details_rule_title">赛制</string>
+
+    <string name="home_mine_title">我的球坛生涯</string>
+    <string name="mine_match">比赛日程</string>
+    <string name="mine_my_match">我的赛事</string>
+    <string name="mine_my_war">我的约战</string>
+    <string name="mine_identity">认证身份</string>
+    <string name="mine_ball_friend">邀请球友</string>
+    <string name="mine_contact_service">联系客服</string>
+
     <string name="mine_title">个人资料</string>
     <string name="mine_name">姓名</string>
     <string name="mine_nickname">昵称</string>
@@ -54,10 +103,14 @@
     <string name="mine_sex">性别</string>
     <string name="mine_register_area">注册地区</string>
 
+    <string name="menu_court_choose_order">订单</string>
+
     <string name="city_area_title">请选择城市</string>
     
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
+
+    <string name="common_apply">立即报名</string>
 
     <string name="loading_login">正在登陆...</string>
     <string name="loading_submit">正在提交数据...</string>

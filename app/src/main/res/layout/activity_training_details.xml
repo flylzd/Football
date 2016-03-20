@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="8dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/app_icon" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center"
+                android:text="报名中"
+                android:textColor="@color/white" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_type" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_num_people" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_start_time" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_end_time" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/training_details_deadline_time" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/line_horizontal" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_coach" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_charge" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_linkman" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_phone" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_course_profile" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                style="@style/trainingDetailsRightText"
+                android:text="@string/training_details_company_profile" />
+
+            <include layout="@layout/line_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_square_btn"
+        android:text="@string/common_apply"
+        android:textColor="@color/white" />
+
+</LinearLayout>

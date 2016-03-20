@@ -33,14 +33,14 @@
                 android:id="@+id/rbMainTabTeam"
                 style="@style/radioMainTabStyle"
                 android:checked="true"
-                android:drawableTop="@drawable/selector_main_tab_team"
-                android:text="@string/main_tab_team" />
+                android:drawableTop="@drawable/selector_main_tab_home"
+                android:text="@string/main_tab_home" />
 
             <RadioButton
                 android:id="@+id/rbMainTabFind"
                 style="@style/radioMainTabStyle"
-                android:drawableTop="@drawable/selector_main_tab_find"
-                android:text="@string/main_tab_find" />
+                android:drawableTop="@drawable/selector_main_tab_message"
+                android:text="@string/main_tab_message" />
 
             <RadioButton
                 android:id="@+id/rbMainTabMine"

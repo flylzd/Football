@@ -13,6 +13,7 @@ import com.derby.football.bean.UserBean;
 import com.derby.football.config.AppConfig;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
+import com.derby.football.utils.RandomID;
 import com.derby.football.utils.SPUtil;
 import com.derby.football.utils.ToastUtil;
 import com.google.gson.Gson;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Call;
@@ -29,7 +32,7 @@ import retrofit.Retrofit;
 
 public class ApiClient {
 
-    public  static Map<Object, List<Call<?>>> apiCall = new HashMap<Object, List<Call<?>>>();
+    public static Map<Object, List<Call<?>>> apiCall = new HashMap<Object, List<Call<?>>>();
 
     private static Gson gson = new Gson();
 
@@ -170,7 +173,7 @@ public class ApiClient {
             @Override
             void onSuccess(Response<AreaBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT);
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT);
                 EventBus.getDefault().post(eventCenter);
             }
         });
@@ -195,9 +198,11 @@ public class ApiClient {
         p.put(ApiService.P_BEAN, "merchant");
         p.put(ApiService.P_ACTION, "getlist");
         Map<String, String> param = new HashMap<String, String>();
-        param.put("areaID", areaID);
+//        param.put("areaID", areaID);  190201
+        param.put("areaID", "190201");  //默认
         param.put("nowPage", String.valueOf(nowPage));
         param.put("perPage", String.valueOf(PER_PAGE));
+        param.put("type", String.valueOf(1));  //场地类型:1三人场,2五人场,3七人场,4十一人场"}}'
         p.put(ApiService.P_PARAM, gson.toJson(param));
         params.put(ApiService.P, gson.toJson(p));
 
@@ -207,7 +212,7 @@ public class ApiClient {
             @Override
             void onSuccess(Response<CourtBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getlist, response.body());
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_getlist, response.body());
                 EventBus.getDefault().post(eventCenter);
             }
         });
@@ -240,7 +245,7 @@ public class ApiClient {
             @Override
             void onSuccess(Response<CourtInfoBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getinfo, response.body());
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_getinfo, response.body());
                 EventBus.getDefault().post(eventCenter);
             }
         });
@@ -275,10 +280,51 @@ public class ApiClient {
             @Override
             void onSuccess(Response<PlaceBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_FIND_COURT_getplace,response.body());
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_getplace, response.body());
                 EventBus.getDefault().post(eventCenter);
             }
         });
+    }
+
+    /**
+     * 下单
+     *
+     * @param context
+     * @param tag
+     * @param mid
+     * @param date
+     * @param orders  //{"球场场地ID":[时段1,时段2]}，例{"1":[12,13]}"  数组
+     */
+    public static void order(final Context context, final Object tag, String mid, String date,List<Map<String,List<Integer>>> orders) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "order");
+        p.put(ApiService.P_ACTION, "create");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("mid", mid);
+        param.put("date", date);
+        param.put("key", RandomID.getRandom32ID());
+        param.put("payType", "1");
+        param.put("detail", gson.toJson(orders));
+        System.out.println("detail == " + gson.toJson(orders));
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<BaseBean> call = API.getApiService().order(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<BaseBean>() {
+            @Override
+            void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT_place_send, response.body());
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+
     }
 
 
