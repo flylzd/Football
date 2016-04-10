@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Football</string>
+    <string name="app_name">德比地图</string>
 
 
     <string name="main_tab_home">主页</string>
@@ -102,6 +102,11 @@
     <string name="mine_age">年龄</string>
     <string name="mine_sex">性别</string>
     <string name="mine_register_area">注册地区</string>
+    <string name="mine_name_hint">请输入真实姓名</string>
+    <string name="mine_nickname_hint">请输入个性称呼</string>
+
+    <string name="mine_edit_title">完善个人资料</string>
+    <string name="mine_edit_confirm">开始专属球坛生涯</string>
 
     <string name="menu_court_choose_order">订单</string>
 
@@ -109,6 +114,7 @@
     
     <string name="common_confirm">确定</string>
     <string name="common_submit">提交</string>
+    <string name="common_exit">退出</string>
 
     <string name="common_apply">立即报名</string>
 
@@ -119,5 +125,8 @@
     <string name="digits_phone">1234567890</string>
 
     <string name="network_failure">请求失败</string>
+
+    <string name="common_female">女</string>
+    <string name="common_male">男</string>
 
 </resources>

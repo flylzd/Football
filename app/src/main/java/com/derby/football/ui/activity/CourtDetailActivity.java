@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.derby.football.R;
+import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.bean.CourtData;
 import com.derby.football.bean.CourtInfoBean;
@@ -76,7 +77,7 @@ public class CourtDetailActivity extends BaseActivity {
         rlvDate.setAdapter(adapter);
 //        rlvDate.setVisibility(View.VISIBLE);
 
-//        ApiClient.getCourtInfo(this, TAG, mid);
+        ApiClient.getCourtInfo(this, TAG, mid);
 
     }
 

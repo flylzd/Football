@@ -16,14 +16,20 @@ import com.derby.football.R;
 import com.derby.football.api.ApiClient;
 import com.derby.football.base.BaseActivity;
 import com.derby.football.bean.PlaceBean;
+import com.derby.football.bean.PlaceBean.RowItem;
 import com.derby.football.config.EventBusCode;
 import com.derby.football.eventbus.EventCenter;
 import com.derby.football.ui.adapter.CourtChooseDateAdapter;
-import com.derby.football.ui.adapter.FindCourtOrderReserveAdapter;
+import com.derby.football.ui.adapter.CourtOrderReserveAdapter;
 import com.derby.football.ui.adapter.ScrollTableAdapter;
 import com.derby.football.utils.ToastUtil;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.yqritc.recyclerviewflexibledivider.VerticalDividerItemDecoration;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 
@@ -51,10 +57,12 @@ public class CourtChooseActivity extends BaseActivity {
 
     private CourtChooseDateAdapter dateAdapter;
     private ScrollTableAdapter scrollTableAdapter;
-    private FindCourtOrderReserveAdapter reserveAdapter;
+    private CourtOrderReserveAdapter orderAdapter;
 
     private String mid;
     private String selectDate;
+
+    private List<Map<String, List<Integer>>> orderPlaces = new ArrayList<Map<String, List<Integer>>>();
 
     @Override
     protected int getLayoutId() {
@@ -81,7 +89,7 @@ public class CourtChooseActivity extends BaseActivity {
 
         dateAdapter = new CourtChooseDateAdapter();
         scrollTableAdapter = new ScrollTableAdapter(this);
-        reserveAdapter = new FindCourtOrderReserveAdapter(this);
+        orderAdapter = new CourtOrderReserveAdapter(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 //        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
@@ -94,16 +102,38 @@ public class CourtChooseActivity extends BaseActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         recyclerViewReserve.setLayoutManager(gridLayoutManager);
 //        recyclerViewReserve.setHasFixedSize(true);
-        recyclerViewReserve.setAdapter(reserveAdapter);
+        recyclerViewReserve.setAdapter(orderAdapter);
 
         tableFixHeaders.setAdapter(scrollTableAdapter);
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<RowItem> slectRowTems = orderAdapter.getSelectRowItem();
+//                if (!selectDate.isEmpty()) {
+//                    orderPlaces.clear();
+//                    for (RowItem rowItem : slectRowTems){
+////                        System.out.println("id " + rowItem.id);
+////                        System.out.println("time " + rowItem.time);
+//                        String placeId = rowItem.id;
+//
+//                    }
+//                }
+                Map<String, List<Integer>> orders = new Hashtable<String, List<Integer>>();
+                ArrayList<Integer> times = new ArrayList<Integer>();
+                times.add(9);
+                times.add(10);
+                orders.put("3", times);
+
+                ApiClient.order(CourtChooseActivity.this, TAG, mid, selectDate, orders);
+            }
+        });
 
         ApiClient.getCourtPlace(this, TAG, mid, selectDate);
     }
 
     @Override
     protected void onResume() {
-       super.onResume();
+        super.onResume();
         System.out.println("onResume");
     }
 
@@ -115,15 +145,15 @@ public class CourtChooseActivity extends BaseActivity {
                 scrollTableAdapter.refreshAll(((PlaceBean) eventCenter.getData()).data);
                 break;
             case EventBusCode.SUCCESS_COURT_place_add:
-                if (reserveAdapter.getItemCount() <= 4) {
-                    reserveAdapter.add((PlaceBean.RowItem) eventCenter.getData());
+                if (orderAdapter.getItemCount() <= 4) {
+                    orderAdapter.add((PlaceBean.RowItem) eventCenter.getData());
                     layoutReserveStatus.setVisibility(View.GONE);
                     layoutReserveList.setVisibility(View.VISIBLE);
                 }
                 break;
             case EventBusCode.SUCCESS_COURT_place_del:
-                reserveAdapter.remove((PlaceBean.RowItem) eventCenter.getData());
-                if (reserveAdapter.getItemCount() == 0) {
+                orderAdapter.remove((PlaceBean.RowItem) eventCenter.getData());
+                if (orderAdapter.getItemCount() == 0) {
                     layoutReserveStatus.setVisibility(View.VISIBLE);
                     layoutReserveList.setVisibility(View.GONE);
                 }
@@ -145,7 +175,7 @@ public class CourtChooseActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO Auto-generated method stub
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_order:
                 ToastUtil.showShort("action_order");
                 break;

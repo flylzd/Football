@@ -7,12 +7,19 @@ public class UserBean extends BaseBean {
 
     public UserData data;
 
-    public class UserData implements Serializable {
+    public static class UserData implements Serializable {
 
         public String id;
         public String imei;
         public String token;
         public int status;
+
+        public String name;
+        public String nickName;
+        public String birthday;
+        public String sex;
+        public String areaID;
+        public String url;
 
         @Override
         public String toString() {

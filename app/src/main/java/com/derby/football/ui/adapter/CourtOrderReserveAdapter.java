@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.derby.football.R;
-import com.derby.football.bean.PlaceBean;
 import com.derby.football.bean.PlaceBean.RowItem;
 import com.derby.football.utils.TimeUtil;
 
@@ -19,14 +17,13 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourtOrderReserveAdapter.ViewHolder> {
+public class CourtOrderReserveAdapter extends RecyclerView.Adapter<CourtOrderReserveAdapter.ViewHolder> {
 
     private Context context;
     private List<RowItem> rowItems = new ArrayList<RowItem>();
 
-    public FindCourtOrderReserveAdapter(Context context) {
+    public CourtOrderReserveAdapter(Context context) {
         this.context = context;
     }
 
@@ -46,6 +43,11 @@ public class FindCourtOrderReserveAdapter extends RecyclerView.Adapter<FindCourt
         }
         this.notifyDataSetChanged();
     }
+
+    public List<RowItem> getSelectRowItem() {
+        return rowItems;
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

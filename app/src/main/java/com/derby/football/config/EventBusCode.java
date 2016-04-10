@@ -20,4 +20,8 @@ public interface EventBusCode {
     int SUCCESS_COURT_place_del = 3023;
     int SUCCESS_COURT_place_send = 3024;
 
+    int SUCCESS_AREA = 3100;
+
+    int SUCCESS_MINE_EDIT = 4000;
+
 }

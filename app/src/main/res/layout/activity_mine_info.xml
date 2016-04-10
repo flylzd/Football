@@ -124,4 +124,17 @@
             style="@style/mineTextRightStyle" />
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/main_margin_top"
+        android:layout_marginRight="@dimen/main_margin_top"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/common_exit"
+        android:textColor="@drawable/color_text_btn"
+        android:textSize="@dimen/login_hint_textSize" />
+
 </LinearLayout>

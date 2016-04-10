@@ -98,9 +98,11 @@ public class ApiClient {
                 AppConfig.UID = response.body().data.id;
                 AppConfig.IMEI = response.body().data.imei;
                 AppConfig.TOKEN = response.body().data.token;
+                AppConfig.STATUS = response.body().data.status;
                 SPUtil.put(context, AppConfig.UID_KEY, AppConfig.UID);
                 SPUtil.put(context, AppConfig.IMEI_KEY, AppConfig.IMEI);
                 SPUtil.put(context, AppConfig.TOKEN_KEY, AppConfig.TOKEN);
+                SPUtil.put(context, AppConfig.STATUS_KEY, AppConfig.STATUS);
 
                 EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_LOGIN);
                 EventBus.getDefault().post(eventCenter);
@@ -146,6 +148,43 @@ public class ApiClient {
         });
     }
 
+
+    /**
+     * 保存用户信息
+     */
+    public static void saveUser(final Context context, Object tag, UserBean.UserData userData) {
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(ApiService.U, getUID());
+        params.put(ApiService.I, AppConfig.IMEI);
+        params.put(ApiService.T, AppConfig.TOKEN);
+        Map<String, String> p = new HashMap<String, String>();
+        p.put(ApiService.P_BEAN, "user");
+        p.put(ApiService.P_ACTION, "save");
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("name", userData.name);
+        param.put("nickName", userData.nickName);
+        param.put("birthday", userData.birthday);     //20160201
+        param.put("sex", userData.sex);  //M代表男，F代表女
+        param.put("areaID", userData.areaID);
+//        param.put("field", verificationCode); //上传的图片input字段名
+//        param.put("url", userData.url);   //上传的图片地址
+        p.put(ApiService.P_PARAM, gson.toJson(param));
+        params.put(ApiService.P, gson.toJson(p));
+
+        Call<BaseBean> call = API.getApiService().register(params);
+        addCall(tag, call);
+        call.enqueue(new ResponseCallback<BaseBean>() {
+            @Override
+            void onSuccess(Response<BaseBean> response, Retrofit retrofit) {
+
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_MINE_EDIT);
+                EventBus.getDefault().post(eventCenter);
+            }
+        });
+    }
+
+
     /**
      * 获取地区
      *
@@ -173,7 +212,7 @@ public class ApiClient {
             @Override
             void onSuccess(Response<AreaBean> response, Retrofit retrofit) {
 
-                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_COURT);
+                EventCenter eventCenter = new EventCenter(EventBusCode.SUCCESS_AREA);
                 EventBus.getDefault().post(eventCenter);
             }
         });
@@ -295,7 +334,8 @@ public class ApiClient {
      * @param date
      * @param orders  //{"球场场地ID":[时段1,时段2]}，例{"1":[12,13]}"  数组
      */
-    public static void order(final Context context, final Object tag, String mid, String date,List<Map<String,List<Integer>>> orders) {
+//    public static void order(final Context context, final Object tag, String mid, String date,List<Map<String,List<Integer>>> orders) {
+    public static void order(final Context context, final Object tag, String mid, String date, Map<String, List<Integer>> orders) {
 
         Map<String, String> params = new HashMap<String, String>();
         params.put(ApiService.U, getUID());

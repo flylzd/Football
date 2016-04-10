@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/include_toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +28,8 @@
                     android:text="@string/mine_name" />
 
                 <EditText
-                    android:id="@+id/tvName"
+                    android:id="@+id/etName"
+                    android:hint="@string/mine_name_hint"
                     style="@style/mineEditTextRightStyle" />
             </LinearLayout>
 
@@ -41,18 +44,22 @@
                     android:text="@string/mine_nickname" />
 
                 <EditText
-                    android:id="@+id/tvNickName"
+                    android:id="@+id/etNickName"
+                    android:hint="@string/mine_nickname_hint"
                     style="@style/mineEditTextRightStyle" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imAvatars"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="16dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp" />
 
     </LinearLayout>
 
@@ -68,24 +75,26 @@
                 style="@style/mineTextLeftStyle"
                 android:text="@string/mine_date_of_birth" />
 
-            <EditText
-                android:id="@+id/etDateOfBirth"
-                style="@style/mineEditTextRightStyle" />
-
-        </LinearLayout>
-
-        <include layout="@layout/line_horizontal" />
-
-        <LinearLayout style="@style/mineEditLayoutStyle">
-
             <TextView
-                style="@style/mineTextLeftStyle"
-                android:text="@string/mine_age" />
-
-            <EditText
-                android:id="@+id/etAge"
+                android:id="@+id/tvDateOfBirth"
                 style="@style/mineEditTextRightStyle" />
+
         </LinearLayout>
+
+        <!--<include layout="@layout/line_horizontal" />-->
+
+        <!--<LinearLayout style="@style/mineEditLayoutStyle">-->
+
+            <!--<TextView-->
+                <!--style="@style/mineTextLeftStyle"-->
+                <!--android:inputType="number"-->
+                <!--android:maxLength="3"-->
+                <!--android:text="@string/mine_age" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/etAge"-->
+                <!--style="@style/mineEditTextRightStyle" />-->
+        <!--</LinearLayout>-->
 
         <include layout="@layout/line_horizontal" />
 
@@ -95,14 +104,16 @@
                 style="@style/mineTextLeftStyle"
                 android:text="@string/mine_sex" />
 
-            <EditText
-                android:id="@+id/etSex"
+            <TextView
+                android:id="@+id/tvSex"
+                android:text="@string/common_male"
                 style="@style/mineEditTextRightStyle" />
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/layoutArea"
         style="@style/mineEditLayoutStyle"
         android:layout_marginTop="16dp">
@@ -111,9 +122,21 @@
             style="@style/mineTextLeftStyle"
             android:text="@string/mine_register_area" />
 
-        <EditText
-            android:id="@+id/etArea"
+        <TextView
+            android:id="@+id/tvArea"
             style="@style/mineEditTextRightStyle" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/main_margin_top"
+        android:layout_marginRight="@dimen/main_margin_top"
+        android:layout_marginTop="@dimen/main_margin_top"
+        android:background="@drawable/selector_bg_btn"
+        android:text="@string/mine_edit_confirm"
+        android:textColor="@drawable/color_text_btn"
+        android:textSize="@dimen/login_hint_textSize" />
 
 </LinearLayout>

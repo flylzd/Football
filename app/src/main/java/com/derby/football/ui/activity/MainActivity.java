@@ -12,12 +12,14 @@ import android.widget.RadioGroup;
 
 import com.derby.football.R;
 import com.derby.football.base.BaseActivity;
+import com.derby.football.config.AppConfig;
 import com.derby.football.ui.fragment.FindFragment;
 import com.derby.football.ui.fragment.HomeFragment;
 import com.derby.football.ui.fragment.MessageFragment;
 import com.derby.football.ui.fragment.MineFragment;
 import com.derby.football.ui.fragment.TeamFragment;
 import com.derby.football.utils.ToastUtil;
+import com.derby.football.utils.UIHelper;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -52,6 +54,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initViewsAndEvents(Bundle savedInstanceState) {
         registerExitReceiver();
+
+        if(AppConfig.STATUS != 2) {  //1用户信息未完整，2用户状态正常
+            UIHelper.showMineEditActivity(this);
+        }
 
         initFragmentSwitcher();
 

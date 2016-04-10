@@ -12,6 +12,7 @@ import com.derby.football.ui.activity.LoginActivity;
 import com.derby.football.ui.activity.MainActivity;
 import com.derby.football.ui.activity.MatchActivity;
 import com.derby.football.ui.activity.MatchDetailsActivity;
+import com.derby.football.ui.activity.MineEditActivity;
 import com.derby.football.ui.activity.MineInfoActivity;
 import com.derby.football.ui.activity.RegisterActivity;
 import com.derby.football.ui.activity.TeamActivity;
@@ -125,6 +126,14 @@ public class UIHelper {
      */
     public static void showMineInfoActivity(Context context) {
         Intent intent = new Intent(context, MineInfoActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 完善个人资料
+     */
+    public static void showMineEditActivity(Context context) {
+        Intent intent = new Intent(context, MineEditActivity.class);
         context.startActivity(intent);
     }
 
